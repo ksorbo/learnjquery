@@ -21,8 +21,10 @@
         <h1>My Title</h1>
     </div><!-- /header -->
 
-    <div data-role="content">
+    <div data-role="content" id="testimoniesList">
         <p>Hello world</p>
+
+
     </div><!-- /content -->
 
     <div data-role="footer" class="ui-footer-fixed">
@@ -32,9 +34,10 @@
 </section><!-- /page -->
 <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
 <!--<script src="bower_components/jquery-mobile/js/jquery.mobile.js"></script>-->
+<script src="js/utilities.js"></script>
 <script src="js/scripts.js"></script>
 <script >
-    fetchTestimonies(10);
+    showTestimonies(30,'desc','thisyear');
 </script>
 </body>
 </html>
