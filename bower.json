@@ -1,0 +1,25 @@
+{
+  "name": "jQueryMobile",
+  "version": "0.1.0",
+  "description": "Learning jQuery Mobile",
+  "authors": [
+    "Keith Sorbo"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-mobile": "~1.4.5",
+    "jquery": "~2.1.3",
+    "jqm-flatui": "*"
+  },
+  "resolutions": {
+    "jquery": "~2.1.3"
+  }
+}
