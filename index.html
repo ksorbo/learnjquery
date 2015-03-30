@@ -2,42 +2,111 @@
 <html>
 <head>
     <title>My Page</title>
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-
-    <!--<link rel="stylesheet" href="bower_components/jquery-mobile/css/themes/default/jquery.mobile.css">-->
-    <!--&lt;!&ndash;<link rel="stylesheet" href="bower_components/jqm-flatui/src/css/jquery.mobile.theme.css">&ndash;&gt;-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
-    <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css">-->
+    <!-- Include the jQuery library -->
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 
+    <!-- Include the jQuery Mobile library -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <script src="js/utilities.js"></script>
+    <script src="js/scripts.js"></script>
+    <script>
+        var options = {
+            'testimonies': {
+                'type': 'testimonies',
+                'count': 10,
+                'order': 'desc',
+                'period': 'thisyear',
+                'cachetime': 86400
+            },
+            'prayerneeds': {
+                'type': 'prayerneeds',
+                'count': 15,
+                'order': 'desc',
+                'period': 'thisyear',
+                'cachetime': 86400
+            }
+
+        };
+
+        $(document).ready(function () {
+            fetchItems(options.testimonies);
+            fetchItems(options.prayerneeds);
+
+        });
+        $(document).on('pagebeforeshow', '#debug', showLocalStorage);
+        $(document).on('pagebeforeshow', '#prayerneeds', showPrayerNeeds);
+        $(document).on('pagebeforeshow', '#testimonies', showTestimonies);
+//        $(document).on('pagebeforeshow', '#debug', showLocalStorage);
+    </script>
 
 
 </head>
 <body>
+<section data-role="page" id="home">
+    <div data-role="header" data-theme="b" class="ui-header">
+        <button onclick="clearCache();">Clear Cache</button>
+        <h1>Home Page</h1>
+    </div>
+    <article data-role="main" class="ui-content" id="homecontent">
+        <h1>Home page</h1>
+        <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#testimonies">Testimonies</a>
+        <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#prayerneeds">Prayer Needs</a>
+        <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#debug">Debug</a>
+
+    </article>
+</section>
+<section data-role="page" id="prayerneeds" onload="showPrayerNeeds();">
+    <div data-role="header" data-theme="b" class="ui-header">
+        <button onclick="clearCache();">Clear Cache</button>
+        <h1>My Title</h1>
+    </div>
+    <!-- /header -->
+    <article data-role="content" id="prayerneedsList">
+        Prayer needs
+
+    </article>
+
+
+</section>
 <section data-role="page" id="testimonies">
 
     <div data-role="header" data-theme="b" class="ui-header">
-        <h1>My Title</h1>
-    </div><!-- /header -->
+        <button onclick="clearCache();">Clear Cache</button>
+        <h1>Testimonies</h1>
+    </div>
+    <!-- /header -->
 
     <div data-role="content" id="testimoniesList">
         <p>Hello world</p>
 
 
-    </div><!-- /content -->
+    </div>
+    <!-- /content -->
 
     <div data-role="footer" class="ui-footer-fixed">
         <h4>My Footer</h4>
-    </div><!-- /footer -->
+    </div>
+    <!-- /footer -->
 
-</section><!-- /page -->
+</section>
+<!-- /page -->
+<section data-role="page" id="debug" onload="showLocalStorage();">
+    <div data-role="header" data-theme="b" class="ui-header">
+        <button onclick="clearCache();">Clear Cache</button>
+        <h1>Debug Page</h1>
+    </div>
+    <!-- /header -->
+    <article data-role="content" id="debugcontent">
+
+    </article>
+</section>
 <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
 <!--<script src="bower_components/jquery-mobile/js/jquery.mobile.js"></script>-->
-<script src="js/utilities.js"></script>
-<script src="js/scripts.js"></script>
-<script >
-    showTestimonies(30,'desc','thisyear');
-</script>
+
 </body>
 </html>
