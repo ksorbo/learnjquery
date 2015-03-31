@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Include jQuery Mobile stylesheets -->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="css/custom.css">
     <!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css">-->
     <!-- Include the jQuery library -->
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -21,6 +22,7 @@
                 'count': 10,
                 'order': 'desc',
                 'period': 'thisyear',
+                'url': 'http://rest.net211.com/items/',
                 'cachetime': 86400
             },
             'prayerneeds': {
@@ -28,20 +30,42 @@
                 'count': 15,
                 'order': 'desc',
                 'period': 'thisyear',
-                'cachetime': 86400
+                'cachetime': 86400,
+                'url': 'http://rest.net211.com/items/'
+            },
+            'totals': {
+                'type': 'totals',
+                'cachetime': 90,
+                'url': 'http://rest.net211.com/totals'
+            },
+            'livedata': {
+                'type': 'livedata',
+                'cachetime': 60,
+                'url': 'http://rest.net211.com/livedata'
             }
 
         };
 
         $(document).ready(function () {
+            options.totals.params = 'all';
             fetchItems(options.testimonies);
             fetchItems(options.prayerneeds);
-
+            $('#select-period').change(function () {
+                options.totals.params =  $('#select-period option:selected').val();
+                showTotals();
+            });
+            $(document).on('pagebeforeshow', '#debug', showLocalStorage);
+            $(document).on('pagebeforeshow', '#prayerneeds', showPrayerNeeds);
+            $(document).on('pagebeforeshow', '#testimonies', showTestimonies);
+            $(document).on('pagebeforeshow', '#livedata', function () {
+                showLiveDataTotal();
+                setInterval(showLiveDataTotal, options.livedata.cachetime * 1000);
+            });
+            $(document).on('pagebeforeshow', '#home', function () {
+                showTotals();
+                setInterval(showTotals, options.totals.cachetime * 1000);
+            });
         });
-        $(document).on('pagebeforeshow', '#debug', showLocalStorage);
-        $(document).on('pagebeforeshow', '#prayerneeds', showPrayerNeeds);
-        $(document).on('pagebeforeshow', '#testimonies', showTestimonies);
-//        $(document).on('pagebeforeshow', '#debug', showLocalStorage);
     </script>
 
 
@@ -49,21 +73,47 @@
 <body>
 <section data-role="page" id="home">
     <div data-role="header" data-theme="b" class="ui-header">
-        <button onclick="clearCache();">Clear Cache</button>
         <h1>Home Page</h1>
     </div>
     <article data-role="main" class="ui-content" id="homecontent">
         <h1>Home page</h1>
         <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#testimonies">Testimonies</a>
         <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#prayerneeds">Prayer Needs</a>
+        <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#livedata">Live Visits</a>
         <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#debug">Debug</a>
+
+        <form>
+            <div class="ui-field-contain"><label for="select-period">Select Period to View</label>
+                <select name="select-period" id="select-period">
+                    <option value="all" selected="selected">All Data</option>
+                    <option value="2015-01-01/2015-12-31">2015</option>
+                    <option value="2014-01-01/2014-12-31">2014</option>
+                    <option value="2013-01-01/2013-12-31">2013</option>
+                    <option value="2012-01-01/2012-12-31">2012</option>
+                    <option value="2011-01-01/2011-12-31">2011</option>
+                    <option value="2010-01-01/2010-12-31">2010</option>
+                    <option value="2009-01-01/2009-12-31">2009</option>
+                        </select>
+            </div>
+        </form>
+        <div id="totalsarea"></div>
+    </article>
+</section>
+<section data-role="page" id="livedata">
+    <div data-role="header" data-theme="b" class="ui-header">
+        <button data-role="button" href="#home">Home</button>
+        <h1>Home Page</h1>
+    </div>
+    <article data-role="content" id="livedatatotal">
+
 
     </article>
 </section>
 <section data-role="page" id="prayerneeds" onload="showPrayerNeeds();">
     <div data-role="header" data-theme="b" class="ui-header">
-        <button onclick="clearCache();">Clear Cache</button>
-        <h1>My Title</h1>
+        <button href="#home">Home</button>
+
+        <h1>Prayer Needs from Inquirers</h1>
     </div>
     <!-- /header -->
     <article data-role="content" id="prayerneedsList">
@@ -76,7 +126,8 @@
 <section data-role="page" id="testimonies">
 
     <div data-role="header" data-theme="b" class="ui-header">
-        <button onclick="clearCache();">Clear Cache</button>
+        <button href="#home">Home</button>
+
         <h1>Testimonies</h1>
     </div>
     <!-- /header -->
@@ -97,6 +148,8 @@
 <!-- /page -->
 <section data-role="page" id="debug" onload="showLocalStorage();">
     <div data-role="header" data-theme="b" class="ui-header">
+        <button href="#home">Home</button>
+
         <button onclick="clearCache();">Clear Cache</button>
         <h1>Debug Page</h1>
     </div>
@@ -105,6 +158,9 @@
 
     </article>
 </section>
+<div data-role="footer" data-id="footer-fixed" data-position="fixed" class="ui-footer-fixed">
+    <h4>My Footer</h4>
+</div>
 <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
 <!--<script src="bower_components/jquery-mobile/js/jquery.mobile.js"></script>-->
 

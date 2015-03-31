@@ -16,7 +16,8 @@ function paddy(n, p, c) {
  */
 function putCache(keyName, data) {
     var d = new Date;
-    var saveTime = d.getTime() / 1000;
+    var saveTime = d.getTime() ;
+    //console.log('Savetime = ' + saveTime);
     var cache = {"saveTime": saveTime, 'data': data};
     localStorage.setItem(keyName, JSON.stringify(cache));
     return true;
@@ -24,19 +25,22 @@ function putCache(keyName, data) {
 /**
  * Look for the keyname in the localStorage. if it is older than age seconds return null
  * @param keyName
- * @param age
+ * @param age in seconds
  */
 function getCache(keyName, age) {
     var d = new Date;
-    var nw = d.getTime() / 1000;
+    var nw = d.getTime();
     var cache, saveTime;
     if (localStorage.getItem(keyName) !== null) {
         cache = JSON.parse(localStorage.getItem(keyName));
         saveTime = cache.saveTime;
-        if (saveTime + age < nw) {
+        if (saveTime + (1000*age) < nw) {
             return null;
         }
         return cache.data;
     }
     return null;
+}
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
