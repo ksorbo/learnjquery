@@ -40,11 +40,34 @@ function showLiveDataTotal() {
     var data = fetchItems(options.livedata);
     var output = '';
     output += '<div class="center">';
-    output += '<span class="bignumber">' + data.total + '</span>';
-    output += '<p>' + data.time + '</p>';
+    output += '<div class="bignumber">' + data.total + '</div>';
+    output += '<p class="visitors">Visitors On All Sites</p>';
+    //output += '<p class="visitors">' + data.time + '</p>';
     output += '</div>';
-    //console.log(output);
+    //output += '<table><thead><tr><td>Site</td><td>Visitors</td></tr></thead>';
+    //jQuery.each(data.sites,function(k,val){
+    //    output += '<tr><td>'+ k + '</td><td>'+val+'</td></tr>';
+    //});
+    //output += '</table>';
+    //output += '<table><thead><tr><td>Country</td><td>Visitors</td></tr></thead>';
+    //$.each(data.countries,function(country,visits){
+    //    output += '<tr><td>'+ country + '</td><td>'+visits+'</td></tr>';
+    //});
+    //output += '</table>';
+    output += '<div id="countrychart" style="width:90%"></div>';
     $('#livedatatotal').html(output);
+    var chartdata = [];
+    $.each(data.countries,function(country,visits){
+        chartdata.push([country,visits]);
+    });
+    //$.jqplot('countrychart',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
+    chartdata= [[['US',5],['China',3],['Indonesia',4],['Mexico',5]]];
+    $.jqplot('countrychart',chartdata,{
+        seriesDefaults:{ renderer: $.jqplot.PieRenderer },
+        legend:{ show:true }
+    });
+    //console.log(output);
+
 }
 function showTestimonies() {
 

@@ -9,6 +9,8 @@
     <!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css">-->
     <!-- Include the jQuery library -->
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="js/jplot/jquery.jqplot.min.js"></script>
+    <link rel="stylesheet" href="js/jplot/jquery.jqplot.css">
 
     <!-- Include the jQuery Mobile library -->
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -77,10 +79,10 @@
     </div>
     <article data-role="main" class="ui-content" id="homecontent">
         <h1>Home page</h1>
-        <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#testimonies">Testimonies</a>
-        <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#prayerneeds">Prayer Needs</a>
-        <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#livedata">Live Visits</a>
-        <a data-role="button" class="ui-btn ui-corners ui-btn-inline" href="#debug">Debug</a>
+        <a data-role="button" class="ui-btn ui-corners " href="#testimonies">Testimonies</a>
+        <a data-role="button" class="ui-btn ui-corners " href="#prayerneeds">Prayer Needs</a>
+        <a data-role="button" class="ui-btn ui-corners " href="#livedata">Live Visits</a>
+        <a data-role="button" class="ui-btn ui-corners " href="#debug">Debug</a>
 
         <form>
             <div class="ui-field-contain"><label for="select-period">Select Period to View</label>
@@ -148,7 +150,6 @@
 <!-- /page -->
 <section data-role="page" id="debug" onload="showLocalStorage();">
     <div data-role="header" data-theme="b" class="ui-header">
-        <button href="#home">Home</button>
 
         <button onclick="clearCache();">Clear Cache</button>
         <h1>Debug Page</h1>
@@ -159,7 +160,9 @@
     </article>
 </section>
 <div data-role="footer" data-id="footer-fixed" data-position="fixed" class="ui-footer-fixed">
-    <h4>My Footer</h4>
+
+    <a data-role="button" href="#home">Home</a>
+    <a data-role="button" href="#testimonies">Testimonies</a>
 </div>
 <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
 <!--<script src="bower_components/jquery-mobile/js/jquery.mobile.js"></script>-->

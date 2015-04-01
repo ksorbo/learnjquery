@@ -1,3 +1,16 @@
 .bignumber{
-    font-size:500%;
+    font-size:200px;
+    line-height: 120px;
+    padding-top:40px;
+    text-align:center;
+    font-weight: bold;
+}
+.visitors{
+    text-align:center;
+    font-size:25px;
+    margin:10px 0;
+}
+.center{
+    display:block;
+    margin:0 auto;
 }
