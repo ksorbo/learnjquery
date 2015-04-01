@@ -1,0 +1,14 @@
+<h1>Prayer Needs</h1>
+<ul data-role="listview" data-inset="true" data-filter="true" data-input="#filter-for-testimonies">
+    {{#each .}}
+        <li>
+            <h3>
+                A {{ genderToPerson gender }} from {{ userlocation~}} shared a prayer request
+                on  {{ shortenedDate datesubmitted }}
+            </h3>
+            <p>
+                {{ comments }}
+            </p>
+        </li>
+    {{/each}}
+</ul>
