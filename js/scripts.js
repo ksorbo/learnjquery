@@ -8,19 +8,18 @@ function clearCache() {
 }
 
 function showTotals() {
-    var output = '';
+    //var output = '';
     var data = fetchItems(options.totals);
-    output += '<table style="width:50%" data-role="table" class="ui-responsive ui-shadow">';
-    output += '<tr><td>Site Visitors</td><td align="right">' + numberWithCommas(data.visits) + '</td></tr>';
-    output += '<tr><td>Responses</td><td align="right">' + numberWithCommas(data.responses) + '</td></tr>';
-    output += '<tr><td>Total Inquirers</td><td align="right">' + numberWithCommas(data.inquirers) + '</td></tr>';
-    output += '<tr><td>Salvations</td><td align="right">' + numberWithCommas(data.salvations) + '</td></tr>';
-    output += '<tr><td>Recommitments</td><td align="right">' + numberWithCommas(data.recommitments) + '</td></tr>';
-    output += '<tr><td>Questions</td><td align="right">' + numberWithCommas(data.questions) + '</td></tr>';
-    output += '<tr><td>Prayer Requests</td><td align="right">' + numberWithCommas(data.prayerrequests  ) + '</td></tr>';
-    output += '<tr><td>Subscriptions</td><td align="right">' + numberWithCommas(data.subscriptions) + '</td></tr>';
-    output += '</table>';
-    $('#totalsarea').html(output);
+    var data2 = {};
+    var h;
+    Object.keys(data).forEach(function (key) {
+        h = (data[key]);
+        if(h.isNumber()) {
+            data2[key] = numberWithCommas(h);
+        }
+    });
+
+    $('#totalsarea2').html(Handlebars.templates.showTotals(data2));
 }
 function showLocalStorage() {
     var output = '<ul>';
@@ -57,14 +56,14 @@ function showLiveDataTotal() {
     output += '<div id="countrychart" style="width:90%"></div>';
     $('#livedatatotal').html(output);
     var chartdata = [];
-    $.each(data.countries,function(country,visits){
-        chartdata.push([country,visits]);
+    $.each(data.countries, function (country, visits) {
+        chartdata.push([country, visits]);
     });
     //$.jqplot('countrychart',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
-    chartdata= [[['US',5],['China',3],['Indonesia',4],['Mexico',5]]];
-    $.jqplot('countrychart',chartdata,{
-        seriesDefaults:{ renderer: $.jqplot.PieRenderer },
-        legend:{ show:true }
+    chartdata = [[['US', 5], ['China', 3], ['Indonesia', 4], ['Mexico', 5]]];
+    $.jqplot('countrychart', chartdata, {
+        seriesDefaults: {renderer: $.jqplot.PieRenderer},
+        legend: {show: true}
     });
     //console.log(output);
 
@@ -86,7 +85,10 @@ function showTestimonies() {
         output += '</li>';
     }
     output += '</ul>';
+
     $('#testimoniesList').html(output);
+    var h = Handlebars.templates.showTestimonies(data);
+    $('#testimoniesList2').html(h);
 }
 /**
  * assumes already loaded in cache
@@ -120,8 +122,8 @@ function fetchItems(option) {
     }
     if (option.type == 'totals') {
         myUrl = option.url;
-        if (options.totals.params){
-            myUrl += '/'+options.totals.params;
+        if (options.totals.params) {
+            myUrl += '/' + options.totals.params;
             localStorage.removeItem('totals');
         }
     }
@@ -138,7 +140,7 @@ function fetchItems(option) {
                         data = JSON.parse(data);
                     }
                     putCache(keyName, data);
-                    console.log('Fetched data for '+ keyName);
+                    console.log('Fetched data for ' + keyName);
                     retVal = data;
                 }
             });

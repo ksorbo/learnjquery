@@ -1,6 +1,7 @@
 /**
  * Created by keith on 3/29/2015.
  */
+//String.prototype.isNumber = function(){return /^\d+$/.test(this);}
 
 function paddy(n, p, c) {
     var pad_char = typeof c !== 'undefined' ? c : '0';
@@ -44,3 +45,4 @@ function getCache(keyName, age) {
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
