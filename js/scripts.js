@@ -71,22 +71,6 @@ function showLiveDataTotal() {
 function showTestimonies() {
 
     var data = fetchItems(options.testimonies);
-    var output = '', person;
-    output += '<h1>Testimonies</h1>';
-    //output += '<form><input id="filter-for-testimonies" data-type="search" placeholder="type to filter..."></form>';
-    output += '<ul data-role="listview" data-inset="true" data-filter="true" data-input="#filter-for-testimonies">';
-    //output += '<li data-role="list-divider" data-theme="a">Testimonies</li>';
-    for (var i = 0; i < data.length; i++) {
-        //console.log(data[i]);
-        output += '<li>';
-        person = (data[i].gender.trim() == 'female') ? 'woman' : 'man';
-        output += 'On ' + data[i].datesubmitted.substring(0, 10) + ' A ' + person + ' from ' + data[i].userlocation.trim();
-        //output += data[i].comments;
-        output += '</li>';
-    }
-    output += '</ul>';
-
-    $('#testimoniesList').html(output);
     var h = Handlebars.templates.showTestimonies(data);
     $('#testimoniesList2').html(h);
 }

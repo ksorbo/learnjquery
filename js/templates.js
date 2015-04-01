@@ -1,12 +1,14 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
 templates['showTestimonies'] = template({"1":function(depth0,helpers,partials,data) {
-    var alias1=this.escapeExpression;
+    var helper, alias1=this.escapeExpression;
 
-  return "        <li>\r\n            "
-    + alias1(helpers.shortenedDate.call(depth0,(depth0 != null ? depth0.datesubmitted : depth0),{"name":"shortenedDate","hash":{},"data":data}))
-    + " "
+  return "        <li>\r\n          A "
     + alias1(helpers.genderToPerson.call(depth0,(depth0 != null ? depth0.gender : depth0),{"name":"genderToPerson","hash":{},"data":data}))
+    + " from "
+    + alias1(((helper = (helper = helpers.userlocation || (depth0 != null ? depth0.userlocation : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"userlocation","hash":{},"data":data}) : helper)))
+    + "shared a testimony on  "
+    + alias1(helpers.shortenedDate.call(depth0,(depth0 != null ? depth0.datesubmitted : depth0),{"name":"shortenedDate","hash":{},"data":data}))
     + "\r\n        </li>\r\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1;
