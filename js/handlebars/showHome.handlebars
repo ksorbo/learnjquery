@@ -1,0 +1,82 @@
+<a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#inquirers">Inquirers</a>
+<a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#responses">Responses</a>
+<a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#testimonies">Testimonies</a>
+
+<a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#prayerneeds">Prayer Needs</a>
+
+<a data-role="button" data-theme="d" class="ui-btn ui-corners " href="#livedata">Live Site Report</a>
+<a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#news">News</a>
+
+<a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#debug">Debug</a>
+
+<div id="totalsarea">
+    <div class="datagrid">
+        <table>
+            <thead>
+            <tr>
+                <th colspan="3" align="center">For the Period <br>
+                    {{ perioddescription }}</th>
+            </tr >
+            </thead>
+            <tbody>
+            <tr>
+                <td >Site Visitors</td>
+                <td>&nbsp;</td>
+                <td align="right">{{ formatCurrency visits }}</td>
+            </tr>
+            <tr>
+                <td >Evangelism Responses</td>
+                <td>&nbsp;</td>
+                <td align="right">{{ formatCurrency responses }}</td>
+            </tr>
+
+            <tr>
+                <td>Salvations</td>
+                <td align="right">{{ formatCurrency salvations }}</td>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td>Recommitments</td>
+                <td align="right">{{  formatCurrency recommitments }}</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Questions Asked</td>
+                <td align="right">{{  formatCurrency questions }}</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Prayer Needs</td>
+                <td align="right">{{  formatCurrency prayerrequests }}</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>Subscriptions</td>
+                <td align="right">{{  formatCurrency subscriptions }}</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td >Inquirers</td>
+                <td>&nbsp;</td>
+                <td align="right">{{ formatCurrency inquirers }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<form>
+    <div class="ui-field-contain"><label for="select-period">Select Period to View</label>
+        <select name="select-period" id="select-period" onchange="options.totals.params='boo'">
+            <option value="all" selected="selected">All Data</option>
+            <option value="2015-01-01/2015-12-31">2015</option>
+            <option value="2014-01-01/2014-12-31">2014</option>
+            <option value="2013-01-01/2013-12-31">2013</option>
+            <option value="2012-01-01/2012-12-31">2012</option>
+            <option value="2011-01-01/2011-12-31">2011</option>
+            <option value="2010-01-01/2010-12-31">2010</option>
+            <option value="2009-01-01/2009-12-31">2009</option>
+      </select>
+    </div>
+</form>

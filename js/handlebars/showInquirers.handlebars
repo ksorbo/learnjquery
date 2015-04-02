@@ -1,0 +1,7 @@
+<h1>Recent Inquiries</h1>
+<ul>
+{{#each .}}
+     <li><span style="text-transform:capitalize;font-weight:bold;">{{ decision }}</span> from a {{ genderToPerson gender }} in <strong>{{ country~}}</strong> on  {{ shortenedDate datesubmitted }}</li>
+
+{{/each}}
+</ul>

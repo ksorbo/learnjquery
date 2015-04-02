@@ -3,11 +3,11 @@
  */
 String.prototype.isNumber = function(){return /^\d+$/.test(this);};
 
-function paddy(n, p, c) {
-    var pad_char = typeof c !== 'undefined' ? c : '0';
-    var pad = new Array(1 + p).join(pad_char);
-    return (pad + n).slice(-pad.length);
-}
+//function paddy(n, p, c) {
+//    var pad_char = typeof c !== 'undefined' ? c : '0';
+//    var pad = new Array(1 + p).join(pad_char);
+//    return (pad + n).slice(-pad.length);
+//}
 
 /**
  * saves the object data to localStorage with a save time included

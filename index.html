@@ -7,7 +7,7 @@
     <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css">-->
     <!-- Include the jQuery library -->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css"/>
     <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
     <link rel="stylesheet" href="css/custom.css">
@@ -20,70 +20,7 @@
     <script src="js/helpers.js"></script>
     <script src="js/templates.js"></script>
     <script src="js/scripts.js"></script>
-    <script>
-        var options = {
-            'testimonies': {
-                'type': 'testimonies',
-                'count': 10,
-                'order': 'desc',
-                'period': 'thisyear',
-                'url': 'http://rest.net211.com/items/',
-                'cachetime': 86400
-            },
-            'prayerneeds': {
-                'type': 'prayerneeds',
-                'count': 15,
-                'order': 'desc',
-                'period': 'thisyear',
-                'cachetime': 86400,
-                'url': 'http://rest.net211.com/items/'
-            },
-            'totals': {
-                'type': 'totals',
-                'cachetime': 90,
-                'url': 'http://rest.net211.com/totals'
-            },
-            'livedata': {
-                'type': 'livedata',
-                'cachetime': 60,
-                'url': 'http://rest.net211.com/livedata'
-            }
-
-        };
-
-        $(document).ready(function () {
-            options.totals.params = 'all';
-            fetchItems(options.testimonies);
-            fetchItems(options.prayerneeds);
-            showTotals();
-            $('#select-period').change(function () {
-                options.totals.params =  $('#select-period option:selected').val();
-                showTotals();
-            });
-            $(document).on('pagebeforeshow', '#debug', showLocalStorage);
-            $(document).on('pagebeforeshow', '#prayerneeds', function(){
-
-                var data = fetchItems(options.prayerneeds);
-                $('[data-role="content"]').html(Handlebars.templates.showPrayerNeeds(data))
-                        .trigger('create');
-            } );
-            $(document).on('pagebeforeshow', '#testimonies', function(){
-                var data = fetchItems(options.testimonies);
-                $('[data-role="content"]').html(Handlebars.templates.showTestimonies(data))
-                        .trigger('create');
-            });
-            $(document).on('pagebeforeshow', '#livedata', function () {
-                var data = fetchItems(options.livedata);
-                var h = Handlebars.templates.showLiveData(data);
-                $('[data-role="content"]').html(h).trigger('create');
-                setInterval(showLiveDataTotal, options.livedata.cachetime * 1000);
-            });
-            $(document).on('pagebeforeshow', '#home', function () {
-                showTotals();
-                setInterval(showTotals, options.totals.cachetime * 1000);
-            });
-        });
-    </script>
+    <script src="js/setup.js"></script>
 
 
 </head>
@@ -93,14 +30,20 @@
     <div data-role="header" data-theme="b" class="ui-header">
         <h1>Home Page</h1>
     </div>
-    <article data-role="main" class="ui-content" id="homecontent">
+    <article data-role="content" class="ui-content" id="homecontent">
 
+        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#inquirers">Inquirers</a>
+        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#responses">Responses</a>
         <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#testimonies">Testimonies</a>
+
         <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#prayerneeds">Prayer Needs</a>
-        <a data-role="button" data-theme="d" class="ui-btn ui-corners " href="#livedata">Live Visits</a>
+
+        <a data-role="button" data-theme="d" class="ui-btn ui-corners " href="#livedata">Live Site Report</a>
+        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#news">News</a>
+
         <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#debug">Debug</a>
 
-
+        <div id="totalsarea"></div>
         <form>
             <div class="ui-field-contain"><label for="select-period">Select Period to View</label>
                 <select name="select-period" id="select-period">
@@ -115,33 +58,72 @@
                         </select>
             </div>
         </form>
-        <div id="totalsarea"></div>
-        <div id="totalsarea2"></div>
     </article>
 </section>
 
+<!--Live Data-->
 <section data-role="page" id="livedata">
     <div data-role="header" data-theme="b" class="ui-header">
         <a data-role="button" href="#home">Home</a>
+
         <h1>Live Data</h1>
     </div>
     <article data-role="content" id="livedatatotal">
     </article>
 </section>
 
+<!--NEWS-->
+<section data-role="page" id="news" onload="showNews();">
+    <div data-role="header" data-theme="b" class="ui-header">
+        <a data-role="button" href="#home">Home</a>
+
+        <h1>News From Network211</h1>
+    </div>
+    <!-- /header -->
+    <article data-role="content" id="newsList">
+    </article>
+</section>
+
+<!--Inquirers-->
+<section data-role="page" id="inquirers" onload="loadPage(options.inquirers);">
+    <div data-role="header" data-theme="b" class="ui-header">
+        <a data-role="button" href="#home">Home</a>
+
+        <h1>Recent Inquirers</h1>
+    </div>
+    <!-- /header -->
+    <article data-role="content" id="inquirersList">
+    </article>
+</section>
+
+<!--Responses-->
+<section data-role="page" id="responses" onload="loadPage(options.responses);">
+    <div data-role="header" data-theme="b" class="ui-header">
+        <a data-role="button" href="#home">Home</a>
+
+        <h1>Recent Responses</h1>
+    </div>
+    <!-- /header -->
+    <article data-role="content" id="responsesList">
+    </article>
+</section>
+
+<!--PrayerNeeds-->
 <section data-role="page" id="prayerneeds" onload="showPrayerNeeds();">
     <div data-role="header" data-theme="b" class="ui-header">
         <a data-role="button" href="#home">Home</a>
         <h1>Prayer Needs from Inquirers</h1>
     </div>
-    <!-- /header -->
+
     <article data-role="content" id="prayerneedsList">
     </article>
 </section>
 
+<!--Testimonies-->
 <section data-role="page" id="testimonies">
     <div data-role="header" data-theme="b" class="ui-header">
         <a data-role="button" href="#home">Home</a>
+
         <h1>Testimonies</h1>
     </div>
     <!-- /header -->
@@ -151,6 +133,8 @@
     <!-- /content -->
 </section>
 <!-- /page -->
+
+<!--Debug-->
 <section data-role="page" id="debug" onload="showLocalStorage();">
     <div data-role="header" data-theme="b" class="ui-header">
 
@@ -162,15 +146,6 @@
 
     </article>
 </section>
-<div data-role="footer" data-id="footer-fixed" data-position="fixed" class="ui-footer-fixed">
 
-    <a data-role="button" href="#home">Home</a>
-    <a data-role="button" href="#testimonies">Testimonies</a>
-</div>
-<!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
-<!--<script src="bower_components/jquery-mobile/js/jquery.mobile.js"></script>-->
-<script>
-    showLiveDataTotal();
-</script>
 </body>
 </html>

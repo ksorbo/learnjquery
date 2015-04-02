@@ -2,15 +2,25 @@
  * Created by keith on 3/28/2015.
  */
 
-function clearCache() {
-    localStorage.clear();
-    showTestimonies(15, 'desc', 'thisyear');
+function loadPage(option) {
+    var data = fetchItems(option);
+    var content = Handlebars.templates[option.template](data);
+    $('#'+option.datadiv).html(content).trigger('create');
+
 }
 
+function clearCache() {
+    localStorage.clear();
+    //showTestimonies(15, 'desc', 'thisyear');
+}
+function showHome(){
+    var data = fetchItems(options.totals);
+    $('#totalsarea').html(Handlebars.templates.showTotals(data)).trigger('create');
+}
 function showTotals() {
     //var output = '';
     var data = fetchItems(options.totals);
-    $('#totalsarea2').html(Handlebars.templates.showTotals(data)).trigger('create');
+    $('#totalsarea').html(Handlebars.templates.showTotals(data)).trigger('create');
 }
 function showLocalStorage() {
     var output = '<ul>';
@@ -28,7 +38,7 @@ function showLocalStorage() {
 }
 function showLiveDataTotal() {
     var data = fetchItems(options.livedata);
-    var h = Handlebars.templates.showLiveData(data)+'<br><span class="notation">'+data.time+'</span>';
+    var h = Handlebars.templates.showLiveData(data) + '<br><span class="notation">' + data.time + '</span>';
     $('#livedatatotal').html(h).trigger('create');
 }
 function showTestimonies() {
@@ -44,21 +54,35 @@ function showPrayerNeeds() {
     var data = fetchItems(options.prayerneeds);
     $('#prayerneedsList').html(Handlebars.templates.showPrayerNeeds(data)).trigger('create');
 }
+function showNews() {
+    options.news.params = 3;
+    var data = fetchItems(options.news);
+    $('#newsList').html(Handlebars.templates.showNews(data)).trigger('create');
+}
 function fetchItems(option) {
 
-    var keyName = option.type;//+ order + period + paddy(count, 3, '0');
-    var myUrl = option.url + option.type + '/' + option.order + '/' + option.count + '/' + option.period;
-    if (option.type == 'livedata') {
-        myUrl = option.url;
+    var myUrl = option.url;
+    if (option.params) {
+        myUrl += '/' + option.params;
     }
-    if (option.type == 'totals') {
-        myUrl = option.url;
-        if (options.totals.params) {
-            myUrl += '/' + options.totals.params;
-            localStorage.removeItem('totals');
-        }
+    if (option.order) {
+        myUrl += '/' + option.order;
     }
-    var retVal = getCache(keyName, option.cachetime);
+    if (option.count) {
+        myUrl += '/' + option.count;
+    }
+    if (option.period) {
+        myUrl += '/' + option.period;
+    }
+    var cacheKey = myUrl;
+
+    //if (option.type == 'totals') {
+    //    if (option.params) {
+    //        localStorage.removeItem(cacheKey);
+    //    }
+    //}
+    //$.mobile.loading('show');
+    var retVal = getCache(cacheKey, option.cachetime);
     if (retVal === null) {
         $.ajax(
             {
@@ -70,11 +94,14 @@ function fetchItems(option) {
                     if (typeof(data) === 'string') {
                         data = JSON.parse(data);
                     }
-                    putCache(keyName, data);
-                    console.log('Fetched data for ' + keyName);
+                    putCache(cacheKey, data);
+                    console.log('Fetched data for ' + cacheKey);
                     retVal = data;
                 }
             });
+    } else {
+        console.log('Got cache for ' + cacheKey);
     }
+    //$.mobile.loading('hide');
     return retVal;
 }

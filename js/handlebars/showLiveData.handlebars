@@ -5,61 +5,72 @@
     <p class="visitors">Visitors on All Sites</p>
 </div>
 
-
+<div data-role="collapsible-set">
 <div data-role="collapsible" class="ui-collapsible ui-collapsible-inset ui-collapsible-collapsed">
     <h3>Countries Visitors are From</h3>
 
-    <div>
+    <div class="datagrid">
         <table>
             <thead>
             <tr>
-                <td>Country</td>
-                <td>Visitors</td>
+                <th>Country</th>
+                <th>Visitors</th>
             </tr>
             </thead>
+            <tbody>
             {{#each countries }}
                 <tr>
                     <td>{{@key}}</td>
                     <td align="right">{{this}}</td>
                 </tr>
             {{/each}}
+            </tbody>
+
         </table>
 
     </div>
 </div>
 <div data-role="collapsible" class="ui-collapsible ui-collapsible-inset ui-collapsible-collapsed">
     <h3>Websites Being Visited</h3>
-
-    <table>
-        <thead>
-        <tr>
-            <td>Website</td>
-            <td>Visitors</td>
-        </tr>
-        </thead>
-        {{#each sites }}
+    <div class="datagrid">
+        <table>
+            <thead>
             <tr>
-                <td>{{@key}}</td>
-                <td align="right">{{this}}</td>
+                <th>Website</th>
+                <th>Visitors</th>
             </tr>
-        {{/each}}
-    </table>
+            </thead>
+            <tbody>
+            {{#each sites }}
+                <tr>
+                    <td>{{@key}}</td>
+                    <td align="right" valign="top">{{this}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
 </div>
 <div data-role="collapsible" class="ui-collapsible ui-collapsible-inset ui-collapsible-collapsed">
     <h3>Pages Being Viewed</h3>
 
-    <table>
-        <thead>
-        <tr>
-            <td>Pages</td>
-            <td>Visitors</td>
-        </tr>
-        </thead>
-        {{#each pages }}
+    <div class="datagrid">
+        <table>
+            <thead>
             <tr>
-                <td>{{@key}}</td>
-                <td align="right">{{this}}</td>
+                <th>Pages</th>
+                <th>Visitors</th>
             </tr>
-        {{/each}}
-    </table>
+            </thead>
+            <tbody>
+            {{#each pages }}
+                <tr>
+                    <td>{{@key}}</td>
+                    <td align="right">{{this}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
 </div>
