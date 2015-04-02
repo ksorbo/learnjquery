@@ -8,7 +8,14 @@ function loadPage(option) {
     $('#'+option.datadiv).html(content).trigger('create');
 
 }
-
+function showInquirers(){
+    var data = fetchItems(options.inquirers);
+    $('#inquirersList').html(Handlebars.templates.showInquirers(data)).trigger('create');
+}
+function showResponses(){
+    var data = fetchItems(options.responses);
+    $('#inquirersList').html(Handlebars.templates.showResponses(data)).trigger('create');
+}
 function clearCache() {
     localStorage.clear();
     //showTestimonies(15, 'desc', 'thisyear');

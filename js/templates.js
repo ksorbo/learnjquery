@@ -65,7 +65,7 @@ templates['showLiveData'] = template({"1":function(depth0,helpers,partials,data)
     + this.escapeExpression(((helper = (helper = helpers.total || (depth0 != null ? depth0.total : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0,{"name":"total","hash":{},"data":data}) : helper)))
     + "\r\n    </div>\r\n    <p class=\"visitors\">Visitors on All Sites</p>\r\n</div>\r\n\r\n<div data-role=\"collapsible-set\">\r\n<div data-role=\"collapsible\" class=\"ui-collapsible ui-collapsible-inset ui-collapsible-collapsed\">\r\n    <h3>Countries Visitors are From</h3>\r\n\r\n    <div class=\"datagrid\">\r\n        <table>\r\n            <thead>\r\n            <tr>\r\n                <th>Country</th>\r\n                <th>Visitors</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n"
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.countries : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "            </tbody>\r\n\r\n        </table>\r\n\r\n    </div>\r\n</div>\r\n<div data-role=\"collapsible\" class=\"ui-collapsible ui-collapsible-inset ui-collapsible-collapsed\">\r\n    <h3>Websites Being Visited</h3>\r\n\r\n    <div class=\"datagrid\">\r\n        <table>\r\n            <thead>\r\n            <tr>\r\n                <th>Website</th>\r\n                <th>Visitors</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n"
+    + "            </tbody>\r\n\r\n        </table>\r\n\r\n    </div>\r\n</div>\r\n<div data-role=\"collapsible\" class=\"ui-collapsible ui-collapsible-inset ui-collapsible-collapsed\">\r\n    <h3>Websites Being Visited</h3>\r\n    <div class=\"datagrid\">\r\n        <table>\r\n            <thead>\r\n            <tr>\r\n                <th>Website</th>\r\n                <th>Visitors</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n"
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.sites : depth0),{"name":"each","hash":{},"fn":this.program(3, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
     + "            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n<div data-role=\"collapsible\" class=\"ui-collapsible ui-collapsible-inset ui-collapsible-collapsed\">\r\n    <h3>Pages Being Viewed</h3>\r\n\r\n    <div class=\"datagrid\">\r\n        <table>\r\n            <thead>\r\n            <tr>\r\n                <th>Pages</th>\r\n                <th>Visitors</th>\r\n            </tr>\r\n            </thead>\r\n            <tbody>\r\n"
     + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.pages : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0),"inverse":this.noop,"data":data})) != null ? stack1 : "")
@@ -112,7 +112,7 @@ templates['showResponses'] = template({"1":function(depth0,helpers,partials,data
     + alias3(((helper = (helper = helpers.country || (depth0 != null ? depth0.country : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"country","hash":{},"data":data}) : helper)))
     + "</strong>&nbsp;on  "
     + alias3(((helper = (helper = helpers.visitdate || (depth0 != null ? depth0.visitdate : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"visitdate","hash":{},"data":data}) : helper)))
-    + "</li>\r\n\r\n";
+    + "</li>\r\n";
 },"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     var stack1;
 

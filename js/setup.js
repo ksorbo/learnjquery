@@ -83,12 +83,8 @@ $(document).ready(function () {
         loadPage(options.prayerneeds);
     });
     $(document).on('pagebeforeshow', '#news', showNews);
-    $(document).on('pagebeforeshow', '#inquirers', function () {
-        loadPage(options.inquirers);
-    });
-    $(document).on('pagebeforeshow', '#responses', function () {
-        loadPage(options.responses);
-    });
+    $(document).on('pagebeforeshow', '#inquirers', showInquirers);
+    $(document).on('pagebeforeshow', '#responses', showResponses);
 
     $(document).on('pagebeforeshow', '#testimonies', function () {
         var data = fetchItems(options.testimonies);
