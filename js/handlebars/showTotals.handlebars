@@ -1,19 +1,25 @@
 <table>
     <tr>
+        <td colspan="2" align="center">For the Period <br> {{ perioddescription }}</td>
+    </tr>
+    <tr>
         <td>Visitors</td>
-        <td>{{ visits }}</td>
+        <td align="right">{{ formatCurrency visits }}</td>
     </tr>
     <tr>
         <td>Responses</td>
-        <td>{{ responses }}</td>
+        <td align="right">{{ formatCurrency responses }}</td>
     </tr>
     <tr>
         <td>Inquirers</td>
-        <td>{{ inquirers }}</td>
+        <td align="right">{{ formatCurrency inquirers }}</td>
     </tr>
     <tr>
         <td>Salvations</td>
-        <td>{{ salvations }}</td>
+        <td align="right">{{ formatCurrency salvations }}</td>
     </tr>
-    <tr><td>Recommitments</td><td>{{  recommitments }}</td></tr>
+    <tr>
+        <td>Recommitments</td>
+        <td align="right">{{  formatCurrency recommitments }}</td>
+    </tr>
 </table>

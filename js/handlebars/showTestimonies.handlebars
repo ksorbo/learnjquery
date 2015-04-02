@@ -1,8 +1,13 @@
-<ul class="testimonies">
-    {{#each .}}
-        <li>
-          A {{ genderToPerson gender }} from {{ userlocation~}} shared a testimony on  {{ shortenedDate datesubmitted }}
-        </li>
-    {{/each}}
+<h1>Testimonies</h1>
 
-</ul>
+<div data-role="collapsible-set">
+{{#each .}}
+    <div data-role="collapsible" data-collapsed="false">
+      <h3> A {{ genderToPerson gender }} from {{ userlocation~}} shared a testimony on  {{ shortenedDate datesubmitted }}</h3>
+      <p>{{ comments }}</p>
+  </div>
+
+
+{{/each}}
+
+</div>

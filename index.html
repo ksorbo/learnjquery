@@ -4,17 +4,18 @@
     <title>My Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Include jQuery Mobile stylesheets -->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-    <link rel="stylesheet" href="css/custom.css">
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css">-->
     <!-- Include the jQuery library -->
-    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <!--<script src="js/jplot/jquery.jqplot.min.js"></script>-->
-    <!--<link rel="stylesheet" href="js/jplot/jquery.jqplot.css">-->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="css/custom.css">
+
     <script src="js/utilities.js"></script>
 
     <!-- Include the jQuery Mobile library -->
-    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
     <script src="js/handlebars.runtime.min.js"></script>
     <script src="js/helpers.js"></script>
     <script src="js/templates.js"></script>
@@ -54,15 +55,27 @@
             options.totals.params = 'all';
             fetchItems(options.testimonies);
             fetchItems(options.prayerneeds);
+            showTotals();
             $('#select-period').change(function () {
                 options.totals.params =  $('#select-period option:selected').val();
                 showTotals();
             });
             $(document).on('pagebeforeshow', '#debug', showLocalStorage);
-            $(document).on('pagebeforeshow', '#prayerneeds', showPrayerNeeds);
-            $(document).on('pagebeforeshow', '#testimonies', showTestimonies);
+            $(document).on('pagebeforeshow', '#prayerneeds', function(){
+
+                var data = fetchItems(options.prayerneeds);
+                $('[data-role="content"]').html(Handlebars.templates.showPrayerNeeds(data))
+                        .trigger('create');
+            } );
+            $(document).on('pagebeforeshow', '#testimonies', function(){
+                var data = fetchItems(options.testimonies);
+                $('[data-role="content"]').html(Handlebars.templates.showTestimonies(data))
+                        .trigger('create');
+            });
             $(document).on('pagebeforeshow', '#livedata', function () {
-                showLiveDataTotal();
+                var data = fetchItems(options.livedata);
+                var h = Handlebars.templates.showLiveData(data);
+                $('[data-role="content"]').html(h).trigger('create');
                 setInterval(showLiveDataTotal, options.livedata.cachetime * 1000);
             });
             $(document).on('pagebeforeshow', '#home', function () {
@@ -75,16 +88,18 @@
 
 </head>
 <body>
+
 <section data-role="page" id="home">
     <div data-role="header" data-theme="b" class="ui-header">
         <h1>Home Page</h1>
     </div>
     <article data-role="main" class="ui-content" id="homecontent">
-        <h1>Home page</h1>
-        <a data-role="button" class="ui-btn ui-corners " href="#testimonies">Testimonies</a>
-        <a data-role="button" class="ui-btn ui-corners " href="#prayerneeds">Prayer Needs</a>
-        <a data-role="button" class="ui-btn ui-corners " href="#livedata">Live Visits</a>
-        <a data-role="button" class="ui-btn ui-corners " href="#debug">Debug</a>
+
+        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#testimonies">Testimonies</a>
+        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#prayerneeds">Prayer Needs</a>
+        <a data-role="button" data-theme="d" class="ui-btn ui-corners " href="#livedata">Live Visits</a>
+        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#debug">Debug</a>
+
 
         <form>
             <div class="ui-field-contain"><label for="select-period">Select Period to View</label>
@@ -104,54 +119,36 @@
         <div id="totalsarea2"></div>
     </article>
 </section>
+
 <section data-role="page" id="livedata">
     <div data-role="header" data-theme="b" class="ui-header">
-        <button data-role="button" href="#home">Home</button>
-        <h1>Home Page</h1>
+        <a data-role="button" href="#home">Home</a>
+        <h1>Live Data</h1>
     </div>
     <article data-role="content" id="livedatatotal">
-
-
     </article>
 </section>
+
 <section data-role="page" id="prayerneeds" onload="showPrayerNeeds();">
     <div data-role="header" data-theme="b" class="ui-header">
-        <button href="#home">Home</button>
-
+        <a data-role="button" href="#home">Home</a>
         <h1>Prayer Needs from Inquirers</h1>
     </div>
     <!-- /header -->
     <article data-role="content" id="prayerneedsList">
-        Prayer needs
-
     </article>
-
-
 </section>
+
 <section data-role="page" id="testimonies">
-
     <div data-role="header" data-theme="b" class="ui-header">
-        <button href="#home">Home</button>
-
+        <a data-role="button" href="#home">Home</a>
         <h1>Testimonies</h1>
     </div>
     <!-- /header -->
 
     <div data-role="content" id="testimoniesList">
-        <p>Hello world</p>
-
-
-    </div>
-    <div id="testimoniesList2">
-
     </div>
     <!-- /content -->
-
-    <div data-role="footer" class="ui-footer-fixed">
-        <h4>My Footer</h4>
-    </div>
-    <!-- /footer -->
-
 </section>
 <!-- /page -->
 <section data-role="page" id="debug" onload="showLocalStorage();">
@@ -172,6 +169,8 @@
 </div>
 <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
 <!--<script src="bower_components/jquery-mobile/js/jquery.mobile.js"></script>-->
-
+<script>
+    showLiveDataTotal();
+</script>
 </body>
 </html>

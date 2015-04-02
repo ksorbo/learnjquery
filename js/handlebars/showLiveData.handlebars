@@ -4,3 +4,62 @@
     </div>
     <p class="visitors">Visitors on All Sites</p>
 </div>
+
+
+<div data-role="collapsible" class="ui-collapsible ui-collapsible-inset ui-collapsible-collapsed">
+    <h3>Countries Visitors are From</h3>
+
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <td>Country</td>
+                <td>Visitors</td>
+            </tr>
+            </thead>
+            {{#each countries }}
+                <tr>
+                    <td>{{@key}}</td>
+                    <td align="right">{{this}}</td>
+                </tr>
+            {{/each}}
+        </table>
+
+    </div>
+</div>
+<div data-role="collapsible" class="ui-collapsible ui-collapsible-inset ui-collapsible-collapsed">
+    <h3>Websites Being Visited</h3>
+
+    <table>
+        <thead>
+        <tr>
+            <td>Website</td>
+            <td>Visitors</td>
+        </tr>
+        </thead>
+        {{#each sites }}
+            <tr>
+                <td>{{@key}}</td>
+                <td align="right">{{this}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</div>
+<div data-role="collapsible" class="ui-collapsible ui-collapsible-inset ui-collapsible-collapsed">
+    <h3>Pages Being Viewed</h3>
+
+    <table>
+        <thead>
+        <tr>
+            <td>Pages</td>
+            <td>Visitors</td>
+        </tr>
+        </thead>
+        {{#each pages }}
+            <tr>
+                <td>{{@key}}</td>
+                <td align="right">{{this}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</div>

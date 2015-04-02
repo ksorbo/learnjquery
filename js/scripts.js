@@ -10,16 +10,7 @@ function clearCache() {
 function showTotals() {
     //var output = '';
     var data = fetchItems(options.totals);
-    var data2 = {};
-    var h;
-    Object.keys(data).forEach(function (key) {
-        h = (data[key]);
-        if(h.isNumber()) {
-            data2[key] = numberWithCommas(h);
-        }
-    });
-
-    $('#totalsarea2').html(Handlebars.templates.showTotals(data2));
+    $('#totalsarea2').html(Handlebars.templates.showTotals(data)).trigger('create');
 }
 function showLocalStorage() {
     var output = '<ul>';
@@ -37,65 +28,21 @@ function showLocalStorage() {
 }
 function showLiveDataTotal() {
     var data = fetchItems(options.livedata);
-    var output = '';
-    output += '<div class="center">';
-    output += '<div class="bignumber">' + data.total + '</div>';
-    output += '<p class="visitors">Visitors On All Sites</p>';
-    //output += '<p class="visitors">' + data.time + '</p>';
-    output += '</div>';
-    //output += '<table><thead><tr><td>Site</td><td>Visitors</td></tr></thead>';
-    //jQuery.each(data.sites,function(k,val){
-    //    output += '<tr><td>'+ k + '</td><td>'+val+'</td></tr>';
-    //});
-    //output += '</table>';
-    //output += '<table><thead><tr><td>Country</td><td>Visitors</td></tr></thead>';
-    //$.each(data.countries,function(country,visits){
-    //    output += '<tr><td>'+ country + '</td><td>'+visits+'</td></tr>';
-    //});
-    //output += '</table>';
-    output += '<div id="countrychart" style="width:90%"></div>';
-    $('#livedatatotal').html(output);
-    var chartdata = [];
-    $.each(data.countries, function (country, visits) {
-        chartdata.push([country, visits]);
-    });
-    //$.jqplot('countrychart',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
-    chartdata = [[['US', 5], ['China', 3], ['Indonesia', 4], ['Mexico', 5]]];
-    $.jqplot('countrychart', chartdata, {
-        seriesDefaults: {renderer: $.jqplot.PieRenderer},
-        legend: {show: true}
-    });
-    //console.log(output);
-
+    var h = Handlebars.templates.showLiveData(data)+'<br><span class="notation">'+data.time+'</span>';
+    $('#livedatatotal').html(h).trigger('create');
 }
 function showTestimonies() {
-
     var data = fetchItems(options.testimonies);
-    var h = Handlebars.templates.showTestimonies(data);
-    $('#testimoniesList2').html(h);
+    $('#testimoniesList2').html(Handlebars.templates.showTestimonies(data)).trigger('create');
 }
+
 /**
  * assumes already loaded in cache
  */
 function showPrayerNeeds() {
 
     var data = fetchItems(options.prayerneeds);
-    var output = '';
-    var person;
-    output += '<h1>Prayer Needs</h1>';
-    //output += '<form><input id="filter-for-testimonies" data-type="search" placeholder="type to filter..."></form>';
-    output += '<ul data-role="listview" data-inset="true" data-filter="true" data-input="#filter-for-testimonies">';
-    //output += '<li data-role="list-divider" data-theme="a">Testimonies</li>';
-    for (var i = 0; i < data.length; i++) {
-        //console.log(data[i]);
-        output += '<li data-role="collapseable" data-iconpos="right">';
-        person = (data[i].gender.trim() == 'female') ? 'woman' : 'man';
-        output += '<h3>On ' + data[i].datesubmitted.substring(0, 10) + ' a prayer request from a ' + person + ' in ' + data[i].userlocation + '</h3>';
-        output += '<p>' + data[i].comments + '</p>';
-        //output += data[i].comments;
-        output += '</li>';
-    }
-    $('#prayerneedsList').html(output);
+    $('#prayerneedsList').html(Handlebars.templates.showPrayerNeeds(data)).trigger('create');
 }
 function fetchItems(option) {
 
