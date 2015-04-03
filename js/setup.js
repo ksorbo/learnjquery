@@ -11,7 +11,7 @@ var options = {
         'url': rootDomain + 'items/testimonies',
         'cachetime': 86400,
         'template': 'testimoniesList',
-        'datadiv':'show'
+        'datadiv': 'show'
     },
     'prayerneeds': {
         'type': 'prayerneeds',
@@ -21,7 +21,7 @@ var options = {
         'cachetime': 86400,
         'url': rootDomain + 'items/prayerneeds',
         'template': 'showPrayerNeeds',
-        'datadiv':'prayerneedsList'
+        'datadiv': 'prayerneedsList'
     },
     'inquirers': {
         'type': 'inquirers',
@@ -29,9 +29,9 @@ var options = {
         'count': 20,
         'order': 'desc',
         'period': 'thisyear',
-        'template':'showInquirers',
-        'cachetime':300,
-        'datadiv':'inquirersList'
+        'template': 'showInquirers',
+        'cachetime': 300,
+        'datadiv': 'inquirersList'
     },
 
     'responses': {
@@ -40,70 +40,68 @@ var options = {
         'count': 20,
         'order': 'desc',
         'period': 'thisyear',
-        'template':'showResponses',
-        'cachetime':300,
-        'datadiv':'responsesList'
+        'template': 'showResponses',
+        'cachetime': 300,
+        'datadiv': 'responsesList'
     },
-    'fullstats':{
-        'type':'fullstats',
+    'fullstats': {
+        'type': 'fullstats',
         'url': rootDomain + 'fullstats',
-        'params':'all',
-        'cachetime':3600,
-        'template':'showFullStats',
-        'datadiv':'fullstatsDiv'
+        'params': 'all',
+        'cachetime': 3600,
+        'template': 'showFullStats',
+        'datadiv': 'fullstatsDiv'
     },
     'totals': {
         'type': 'totals',
         'cachetime': 120,
         'url': rootDomain + 'totals',
         'template': 'showTotals',
-        'datadiv':'totalsarea'
+        'datadiv': 'totalsarea'
     },
     'livedata': {
         'type': 'livedata',
         'cachetime': 120,
         'url': rootDomain + 'livedata',
         'template': 'showLiveData',
-        'datadiv':'livedataList'
+        'datadiv': 'livedataList'
     },
     'news': {
         'type': 'news',
         'cachetime': 86400,
         'url': rootDomain + 'news',
         'template': 'showNews',
-        'datadiv':'newsList'
+        'datadiv': 'newsList'
     }
 };
 
 $(document).ready(function () {
-    //options.totals.params = 'all';
-//            fetchItems(options.testimonies);
-//            fetchItems(options.prayerneeds);
-//    showHome();
 
+    loadOptions();
+    $('#button-bars').css('margin-top', '3px');
     $('#select-stats-period').change(function () {
-        var param= $('#select-stats-period option:selected').val();
+        var param = $('#select-stats-period option:selected').val();
         showFullStats(param);
     });
+
     $(document).on('pagebeforeshow', '#home', showHome);
     $(document).on('pagebeforeshow', '#debug', showLocalStorage);
-    $(document).on('pagebeforeshow', '#prayerneeds', function () {
-        loadPage(options.prayerneeds);
-    });
+    $(document).on('pagebeforeshow', '#prayerneeds', showPrayerNeeds);
     $(document).on('pagebeforeshow', '#news', showNews);
     $(document).on('pagebeforeshow', '#inquirers', showInquirers);
     $(document).on('pagebeforeshow', '#responses', showResponses);
-    $(document).on('pagebeforeshow', '#fullstats', function(){
+    $(document).on('pagebeforeshow', '#testimonies', showTestimonies);
+
+    $(document).on('pagebeforeshow', '#fullstats', function () {
         showFullStats('all');
     });
+    //OPTIONS
+    $(document).on('pagebeforeshow', '#options', showOptions);
+    $(document).on('pagehide', '#options', saveOptions);
 
-    $(document).on('pagebeforeshow', '#testimonies', function () {
-        var data = fetchItems(options.testimonies);
-        $('#testimoniesList').html(Handlebars.templates.showTestimonies(data))
-            .trigger('create');
-    });
+    //LIVE DATA
     $(document).on('pagebeforeshow', '#livedata', function () {
-       showLiveDataTotal();
+        showLiveDataTotal();
         options.livedata.timer = setInterval(showLiveDataTotal, options.livedata.cachetime * 1000);
     });
     $(document).on('pagehide', '#livedata', function () {
@@ -111,8 +109,11 @@ $(document).ready(function () {
             clearInterval(options.livedata.timer);
         }
     });
-    $(document).on('pagebeforeshow', '#home', function () {
-        //showTotals();
-        //setInterval(showHome, options.totals.cachetime * 1000);
-    });
+    //$(document).ajaxStart(function () {
+    //    //show ajax indicator
+    //    ajaxindicatorstart('loading data.. please wait..');
+    //}).ajaxStop(function () {
+    //    //hide ajax indicator
+    //    ajaxindicatorstop();
+    //});
 });

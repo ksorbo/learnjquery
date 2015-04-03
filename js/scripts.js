@@ -5,31 +5,67 @@
 function loadPage(option) {
     var data = fetchItems(option);
     var content = Handlebars.templates[option.template](data);
-    $('#'+option.datadiv).html(content).trigger('create');
+    $('#' + option.datadiv).html(content).trigger('create');
 }
-function showInquirers(){
+function showOptions() {
+    var data = null;
+    $('#optionsList').html(Handlebars.templates.showOptions(data)).trigger('create');
+    loadOptions();
+    $('#fullStatsCacheTime').val(options.fullstats.cachetime);
+    $('#liveDataCacheTime').val(options.livedata.cachetime);
+    $('#prayerTestimoniesCacheTime').val(options.testimonies.cachetime/3600);
+}
+function loadOptions(){
+    if(localStorage.getItem('options') !== null) {
+        var restored = JSON.parse(localStorage.getItem('options'));
+        options.livedata.cachetime = restored.liveDataCacheTime;
+        options.testimonies.cachetime = restored.prayerTestimoniesCacheTime;
+        options.prayerneeds.cachetime = restored.prayerTestimoniesCacheTime;
+        options.fullstats.cachetime = restored.fullStatsCacheTime;
+    }
+}
+function saveOptions() {
+    var fullStats = $('#fullStatsCacheTime').val()
+    var liveStats = $('#liveDataCacheTime').val();
+    var prayerTestimonies = $('#prayerTestimoniesCacheTime').val()*3600;
+    var options = {
+        'fullStatsCacheTime': fullStats,
+        'liveDataCacheTime':liveStats,
+        'prayerTestimoniesCacheTime':prayerTestimonies
+    };
+    localStorage.setItem('options', JSON.stringify(options));
+    loadOptions();
+}
+
+function showInquirers() {
+    ajaxindicatorstart('Loading latest inquirers');
     var data = fetchItems(options.inquirers);
     $('#inquirersList').html(Handlebars.templates.showInquirers(data)).trigger('create');
+    ajaxindicatorstop();
 }
-function showResponses(){
+function showResponses() {
     var data = fetchItems(options.responses);
     $('#responsesList').html(Handlebars.templates.showResponses(data)).trigger('create');
 }
 function clearCache() {
+    var options = localStorage.getItem('options');
     localStorage.clear();
+    localStorage.setItem('options',options);
     //showTestimonies(15, 'desc', 'thisyear');
     $.mobile.navigate('#debug');
 }
-function showHome(){
+function showHome() {
     //var data = fetchItems(options.totals);
     //$('#totalsarea').html(Handlebars.templates.showTotals(data)).trigger('create');
     $('#homecontent').trigger('create');
 }
-function showFullStats(param){
+function showFullStats(param) {
+    ajaxindicatorstart('Loading Project100Million Stats')
     options.fullstats.params = param;
     var data = fetchItems(options.fullstats);
     var h = Handlebars.templates.showFullStats(data);
     $('#fullstatsDiv').html(h).trigger('create');
+    ajaxindicatorstop();
 }
 function showTotals() {
     //var output = '';
@@ -50,10 +86,16 @@ function showLocalStorage() {
     output += '</ul>';
     $('#debugcontent').html(output);
 }
+function refreshLiveStats() {
+    clearCacheItem(options.livedata.url);
+    showLiveDataTotal();
+}
 function showLiveDataTotal() {
+    ajaxindicatorstart('Loading Live Statistics..');
     var data = fetchItems(options.livedata);
     var h = Handlebars.templates.showLiveData(data) + '<br><span class="notation">' + data.time + '</span>';
     $('#livedataList').html(h).trigger('create');
+    ajaxindicatorstop();
 }
 function showTestimonies() {
     var data = fetchItems(options.testimonies);

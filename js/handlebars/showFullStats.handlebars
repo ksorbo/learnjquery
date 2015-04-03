@@ -68,7 +68,7 @@
                 <tbody>
                 {{#each inquirercountries}}
                     <tr>
-                        <td>{{counter @index }}. {{ country~}}</td>
+                        <td>{{counter @index }}. {{ country~}} {{ flagIconLink country~}}</td>
                         <td align="right">{{ formatCurrency count }}</td>
                     </tr>
                 {{/each}}
@@ -112,7 +112,7 @@
                 <tbody>
                 {{#each responsecountries}}
                     <tr>
-                        <td>{{counter @index }}. {{ country~}}</td>
+                        <td>{{counter @index }}. {{ country~}} {{ flagIconLink country~}}</td>
                         <td align="right">{{ formatCurrency count }}</td>
                     </tr>
                 {{/each}}

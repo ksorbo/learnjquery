@@ -24,6 +24,26 @@
     font-size: 65%;
 }
 
+.flagicon{
+    position:relative;
+    top:10px;
+}
+/* http://www.objectpartners.com/2013/05/13/adding-a-sliding-menu-to-your-jquery-mobile-app/#tehcodez */
+.ui-panel-inner {
+    padding:0px; /*make the buttons flush edge to edge*/
+}
+.ui-controlgroup {
+    margin:0; /*make the buttons flush to the top*/
+}
+#header {
+    height:54px;
+}
+#bars-button {
+    margin:7px;
+}
+
+
+
 .datagrid table {
     border-collapse: collapse;
     text-align: left;

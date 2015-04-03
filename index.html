@@ -7,9 +7,11 @@
     <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css">-->
     <!-- Include the jQuery library -->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css"/>
-    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <!--<script src="js/jquery.mmenu.min.all.js"></script>-->
+    <!--<link rel="stylesheet" href="css/jquery.mmenu.all.css">-->
     <link rel="stylesheet" href="css/custom.css">
 
     <script src="js/utilities.js"></script>
@@ -25,140 +27,163 @@
 
 </head>
 <body>
+<div>
 
-<section data-role="page" id="home">
-    <div data-role="header" data-theme="b" class="ui-header">
-        <h1>Network211</h1>
-    </div>
-    <article data-role="content" class="ui-content" id="homecontent">
-        <a data-role="button" data-theme="d" class="ui-btn ui-corners " href="#fullstats">Project100Million Statistics</a>
-        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#inquirers">Inquirers</a>
-        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#responses">Responses</a>
-        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#testimonies">Testimonies</a>
+    <div data-role="page" id="home" data-theme="b">
+        <div data-role="panel" id="navpanel" data-theme="a"
+             data-display="overlay" data-position="right">
+            <div data-role="controlgroup" data-corners="false">
+                <a href="#fullstats" data-role="button">Project100Millions Stats</a>
+                <a href="#livedata" data-role="button">Live Data (takes a moment to load)</a>
+                <a href="#inquirers" data-role="button">Recent Inquirers</a>
+                <a href="#responses" data-role="button">Recent Responses</a>
+                <a href="#testimonies" data-role="button">Testimonies</a>
+                <a href="#prayerneeds" data-role="button">Prayer Needs</a>
+                <a href="#news" data-role="button">News From Network211</a>
+                <a href="#options" data-role="button">Options</a>
 
-        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#prayerneeds">Prayer Needs</a>
-
-        <a data-role="button" data-theme="d" class="ui-btn ui-corners " href="#livedata">Live Site Report (takes a moment)</a>
-        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#news">News</a>
-
-        <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#debug">Debug</a>
-
-    </article>
-</section>
-
-<!--Live Data-->
-<section data-role="page" id="livedata">
-    <div data-role="header" data-theme="b" class="ui-header">
-        <a data-role="button" href="#home">Home</a>
-
-        <h1>Live Data</h1>
-    </div>
-    <article data-role="content" id="livedataList">
-    </article>
-</section>
-
-<!--NEWS-->
-<section data-role="page" id="news" onload="showNews();">
-    <div data-role="header" data-theme="b" class="ui-header">
-        <a data-role="button" href="#home">Home</a>
-
-        <h1>News From Network211</h1>
-    </div>
-    <!-- /header -->
-    <article data-role="content" id="newsList">
-        <h2>Sorry, no news articles available...</h2>
-    </article>
-</section>
-
-<!--Fullstats-->
-<section data-role="page" id="fullstats" onload="showFullStats();">
-    <div data-role="header" data-theme="b" class="ui-header">
-        <a data-role="button" href="#home">Home</a>
-
-        <h1>Project100Million Statistics</h1>
-    </div>
-    <!-- /header -->
-    <article data-role="content" id="fullstatsList">
-    <div id="fullstatsDiv"></div>
-    <form>
-        <div class="ui-field-contain"><label for="select-stats-period">Select Period to View</label>
-            <select name="select-stats-period" id="select-stats-period">
-                <option value="all" selected="selected">All Data</option>
-                <option value="2015-01-01/2015-12-31">2015</option>
-                <option value="2014-01-01/2014-12-31">2014</option>
-                <option value="2013-01-01/2013-12-31">2013</option>
-                <option value="2012-01-01/2012-12-31">2012</option>
-                <option value="2011-01-01/2011-12-31">2011</option>
-                <option value="2010-01-01/2010-12-31">2010</option>
-                <option value="2009-01-01/2009-12-31">2009</option>
-                    </select>
+            </div>
         </div>
-    </form></article>
-</section>
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a id="bars-button" data-icon="bars"  class="ui-btn-right" style="margin-top:3px;" href="#navpanel">Menu</a>
+            <h1>Network211</h1>
+        </div>
+        <article data-role="content" class="ui-content" id="homecontent">
 
-<!--Inquirers -->
-<section data-role="page" id="inquirers" onload="showInquirers();">
-    <div data-role="header" data-theme="b" class="ui-header">
-        <a data-role="button" href="#home">Home</a>
 
-        <h1>Recent Inquirers</h1>
-    </div>
-    <!-- /header -->
-    <article data-role="content" id="inquirersList">
-    </article>
-
-</section>
-
-<!--Responses-->
-<section data-role="page" id="responses" onload="showResponses();">
-    <div data-role="header" data-theme="b" class="ui-header">
-        <a data-role="button" href="#home">Home</a>
-
-        <h1>Recent Responses</h1>
-    </div>
-    <!-- /header -->
-    <article data-role="content" id="responsesList">
-    </article>
-</section>
-
-<!--PrayerNeeds-->
-<section data-role="page" id="prayerneeds" onload="showPrayerNeeds();">
-    <div data-role="header" data-theme="b" class="ui-header">
-        <a data-role="button" href="#home">Home</a>
-        <h1>Prayer Needs from Inquirers</h1>
+        </article>
     </div>
 
-    <article data-role="content" id="prayerneedsList">
-    </article>
-</section>
+    <!--Live Data-->
+    <div data-role="page" id="livedata">
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Home</a>
 
-<!--Testimonies-->
-<section data-role="page" id="testimonies">
-    <div data-role="header" data-theme="b" class="ui-header">
-        <a data-role="button" href="#home">Home</a>
-
-        <h1>Testimonies</h1>
+            <h1>Live Data</h1>
+        </div>
+        <article data-role="content" id="livedataList">
+        </article>
     </div>
-    <!-- /header -->
 
-    <div data-role="content" id="testimoniesList">
+    <!--NEWS-->
+    <div data-role="page" id="news" onload="showNews();">
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Home</a>
+
+            <h1>News From Network211</h1>
+        </div>
+        <!-- /header -->
+        <article data-role="content" id="newsList">
+            <h2>Sorry, no news articles available...</h2>
+        </article>
     </div>
-    <!-- /content -->
-</section>
-<!-- /page -->
 
-<!--Debug-->
-<section data-role="page" id="debug" onload="showLocalStorage();">
-    <div data-role="header" data-theme="b" class="ui-header">
+    <!--Fullstats-->
+    <div data-role="page" id="fullstats" onload="showFullStats();">
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Home</a>
 
-        <button onclick="clearCache();">Clear Cache</button>
-        <h1>Debug Page</h1>
+            <h1>Project100Million Statistics</h1>
+        </div>
+        <!-- /header -->
+        <article data-role="content" id="fullstatsList">
+            <div id="fullstatsDiv"></div>
+            <form>
+                <div class="ui-field-contain"><label for="select-stats-period">Select Period to View</label>
+                    <select name="select-stats-period" id="select-stats-period">
+                        <option value="all" selected="selected">All Data</option>
+                        <option value="2015-01-01/2015-12-31">2015</option>
+                        <option value="2014-01-01/2014-12-31">2014</option>
+                        <option value="2013-01-01/2013-12-31">2013</option>
+                        <option value="2012-01-01/2012-12-31">2012</option>
+                        <option value="2011-01-01/2011-12-31">2011</option>
+                        <option value="2010-01-01/2010-12-31">2010</option>
+                        <option value="2009-01-01/2009-12-31">2009</option>
+                            </select>
+                </div>
+            </form>
+        </article>
     </div>
-    <!-- /header -->
-    <article data-role="content" id="debugcontent">
 
-    </article>
-</section>
+    <!--Inquirers -->
+    <div data-role="page" id="inquirers" onload="showInquirers();">
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Home</a>
 
+            <h1>Recent Inquirers</h1>
+        </div>
+        <!-- /header -->
+        <article data-role="content" id="inquirersList">
+        </article>
+
+    </div>
+
+    <!--Responses-->
+    <div data-role="page" id="responses" onload="showResponses();">
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Home</a>
+
+            <h1>Recent Responses</h1>
+        </div>
+        <!-- /header -->
+        <article data-role="content" id="responsesList">
+        </article>
+    </div>
+
+    <!--PrayerNeeds-->
+    <div data-role="page" id="prayerneeds" onload="showPrayerNeeds();">
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Home</a>
+
+            <h1>Prayer Needs from Inquirers</h1>
+        </div>
+
+        <article data-role="content" id="prayerneedsList">
+        </article>
+    </div>
+
+    <!--Testimonies-->
+    <div data-role="page" id="testimonies">
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Home</a>
+
+            <h1>Testimonies</h1>
+        </div>
+        <!-- /header -->
+
+        <div data-role="content" id="testimoniesList">
+        </div>
+        <!-- /content -->
+    </div>
+    <!-- /page -->
+
+    <!--Options-->
+    <div data-role="page" id="options">
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Home</a>
+
+            <h1>Options</h1>
+        </div>
+        <!-- /header -->
+
+        <div data-role="content" id="optionsList">
+        </div>
+        <!-- /content -->
+    </div>
+
+
+    <!--Debug-->
+    <div data-role="page" id="debug" onload="showLocalStorage();">
+        <div data-role="header" data-theme="b" class="ui-header">
+
+            <button onclick="clearCache();">Clear Cache</button>
+            <h1>Debug Page</h1>
+        </div>
+        <!-- /header -->
+        <article data-role="content" id="debugcontent">
+
+        </article>
+    </div>
+</div>
 </body>
 </html>

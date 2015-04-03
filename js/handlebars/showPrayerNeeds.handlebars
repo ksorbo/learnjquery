@@ -1,9 +1,10 @@
 <h1>Prayer Needs</h1>
+<p>These prayer needs are refreshed once a week on Tuesday</p>
 <div data-role="collapsible-set">
     {{#each .}}
     <div data-role="collapsible" >
             <h3>
-                A {{ genderToPerson gender }} from {{ userlocation~}} shared a prayer request
+                A {{ genderToPerson gender }} from {{ userlocation~}} {{ flagIconLink userlocation~}}&nbsp;shared a prayer request
                 on  {{ shortenedDate datesubmitted }}
             </h3>
             <p>
