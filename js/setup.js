@@ -44,7 +44,14 @@ var options = {
         'cachetime':300,
         'datadiv':'responsesList'
     },
-
+    'fullstats':{
+        'type':'fullstats',
+        'url': rootDomain + 'fullstats',
+        'params':'all',
+        'cachetime':3600,
+        'template':'showFullStats',
+        'datadiv':'fullstatsDiv'
+    },
     'totals': {
         'type': 'totals',
         'cachetime': 120,
@@ -57,7 +64,7 @@ var options = {
         'cachetime': 120,
         'url': rootDomain + 'livedata',
         'template': 'showLiveData',
-        'datadiv':'livedatatotal'
+        'datadiv':'livedataList'
     },
     'news': {
         'type': 'news',
@@ -69,13 +76,14 @@ var options = {
 };
 
 $(document).ready(function () {
-    options.totals.params = 'all';
+    //options.totals.params = 'all';
 //            fetchItems(options.testimonies);
 //            fetchItems(options.prayerneeds);
-    showHome();
-    $('#select-period').change(function () {
-        options.totals.params= $('#select-period option:selected').val();
-        showHome();
+//    showHome();
+
+    $('#select-stats-period').change(function () {
+        var param= $('#select-stats-period option:selected').val();
+        showFullStats(param);
     });
     $(document).on('pagebeforeshow', '#home', showHome);
     $(document).on('pagebeforeshow', '#debug', showLocalStorage);
@@ -85,16 +93,17 @@ $(document).ready(function () {
     $(document).on('pagebeforeshow', '#news', showNews);
     $(document).on('pagebeforeshow', '#inquirers', showInquirers);
     $(document).on('pagebeforeshow', '#responses', showResponses);
+    $(document).on('pagebeforeshow', '#fullstats', function(){
+        showFullStats('all');
+    });
 
     $(document).on('pagebeforeshow', '#testimonies', function () {
         var data = fetchItems(options.testimonies);
-        $('[data-role="content"]').html(Handlebars.templates.showTestimonies(data))
+        $('#testimoniesList').html(Handlebars.templates.showTestimonies(data))
             .trigger('create');
     });
     $(document).on('pagebeforeshow', '#livedata', function () {
-        var data = fetchItems(options.livedata);
-        var h = Handlebars.templates.showLiveData(data);
-        $('[data-role="content"]').html(h).trigger('create');
+       showLiveDataTotal();
         options.livedata.timer = setInterval(showLiveDataTotal, options.livedata.cachetime * 1000);
     });
     $(document).on('pagehide', '#livedata', function () {
@@ -103,7 +112,7 @@ $(document).ready(function () {
         }
     });
     $(document).on('pagebeforeshow', '#home', function () {
-        showTotals();
-        setInterval(showHome, options.totals.cachetime * 1000);
+        //showTotals();
+        //setInterval(showHome, options.totals.cachetime * 1000);
     });
 });

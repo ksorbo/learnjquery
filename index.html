@@ -28,36 +28,21 @@
 
 <section data-role="page" id="home">
     <div data-role="header" data-theme="b" class="ui-header">
-        <h1>Home Page</h1>
+        <h1>Network211</h1>
     </div>
     <article data-role="content" class="ui-content" id="homecontent">
-
+        <a data-role="button" data-theme="d" class="ui-btn ui-corners " href="#fullstats">Project100Million Statistics</a>
         <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#inquirers">Inquirers</a>
         <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#responses">Responses</a>
         <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#testimonies">Testimonies</a>
 
         <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#prayerneeds">Prayer Needs</a>
 
-        <a data-role="button" data-theme="d" class="ui-btn ui-corners " href="#livedata">Live Site Report</a>
+        <a data-role="button" data-theme="d" class="ui-btn ui-corners " href="#livedata">Live Site Report (takes a moment)</a>
         <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#news">News</a>
 
         <a data-role="button" data-theme="c" class="ui-btn ui-corners " href="#debug">Debug</a>
 
-        <div id="totalsarea"></div>
-        <form>
-            <div class="ui-field-contain"><label for="select-period">Select Period to View</label>
-                <select name="select-period" id="select-period">
-                    <option value="all" selected="selected">All Data</option>
-                    <option value="2015-01-01/2015-12-31">2015</option>
-                    <option value="2014-01-01/2014-12-31">2014</option>
-                    <option value="2013-01-01/2013-12-31">2013</option>
-                    <option value="2012-01-01/2012-12-31">2012</option>
-                    <option value="2011-01-01/2011-12-31">2011</option>
-                    <option value="2010-01-01/2010-12-31">2010</option>
-                    <option value="2009-01-01/2009-12-31">2009</option>
-                        </select>
-            </div>
-        </form>
     </article>
 </section>
 
@@ -68,7 +53,7 @@
 
         <h1>Live Data</h1>
     </div>
-    <article data-role="content" id="livedatatotal">
+    <article data-role="content" id="livedataList">
     </article>
 </section>
 
@@ -81,10 +66,37 @@
     </div>
     <!-- /header -->
     <article data-role="content" id="newsList">
+        <h2>Sorry, no news articles available...</h2>
     </article>
 </section>
 
-<!--Inquirers-->
+<!--Fullstats-->
+<section data-role="page" id="fullstats" onload="showFullStats();">
+    <div data-role="header" data-theme="b" class="ui-header">
+        <a data-role="button" href="#home">Home</a>
+
+        <h1>Project100Million Statistics</h1>
+    </div>
+    <!-- /header -->
+    <article data-role="content" id="fullstatsList">
+    <div id="fullstatsDiv"></div>
+    <form>
+        <div class="ui-field-contain"><label for="select-stats-period">Select Period to View</label>
+            <select name="select-stats-period" id="select-stats-period">
+                <option value="all" selected="selected">All Data</option>
+                <option value="2015-01-01/2015-12-31">2015</option>
+                <option value="2014-01-01/2014-12-31">2014</option>
+                <option value="2013-01-01/2013-12-31">2013</option>
+                <option value="2012-01-01/2012-12-31">2012</option>
+                <option value="2011-01-01/2011-12-31">2011</option>
+                <option value="2010-01-01/2010-12-31">2010</option>
+                <option value="2009-01-01/2009-12-31">2009</option>
+                    </select>
+        </div>
+    </form></article>
+</section>
+
+<!--Inquirers -->
 <section data-role="page" id="inquirers" onload="showInquirers();">
     <div data-role="header" data-theme="b" class="ui-header">
         <a data-role="button" href="#home">Home</a>
@@ -94,6 +106,7 @@
     <!-- /header -->
     <article data-role="content" id="inquirersList">
     </article>
+
 </section>
 
 <!--Responses-->

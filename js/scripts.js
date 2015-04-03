@@ -6,7 +6,6 @@ function loadPage(option) {
     var data = fetchItems(option);
     var content = Handlebars.templates[option.template](data);
     $('#'+option.datadiv).html(content).trigger('create');
-
 }
 function showInquirers(){
     var data = fetchItems(options.inquirers);
@@ -14,15 +13,23 @@ function showInquirers(){
 }
 function showResponses(){
     var data = fetchItems(options.responses);
-    $('#inquirersList').html(Handlebars.templates.showResponses(data)).trigger('create');
+    $('#responsesList').html(Handlebars.templates.showResponses(data)).trigger('create');
 }
 function clearCache() {
     localStorage.clear();
     //showTestimonies(15, 'desc', 'thisyear');
+    $.mobile.navigate('#debug');
 }
 function showHome(){
-    var data = fetchItems(options.totals);
-    $('#totalsarea').html(Handlebars.templates.showTotals(data)).trigger('create');
+    //var data = fetchItems(options.totals);
+    //$('#totalsarea').html(Handlebars.templates.showTotals(data)).trigger('create');
+    $('#homecontent').trigger('create');
+}
+function showFullStats(param){
+    options.fullstats.params = param;
+    var data = fetchItems(options.fullstats);
+    var h = Handlebars.templates.showFullStats(data);
+    $('#fullstatsDiv').html(h).trigger('create');
 }
 function showTotals() {
     //var output = '';
@@ -46,11 +53,11 @@ function showLocalStorage() {
 function showLiveDataTotal() {
     var data = fetchItems(options.livedata);
     var h = Handlebars.templates.showLiveData(data) + '<br><span class="notation">' + data.time + '</span>';
-    $('#livedatatotal').html(h).trigger('create');
+    $('#livedataList').html(h).trigger('create');
 }
 function showTestimonies() {
     var data = fetchItems(options.testimonies);
-    $('#testimoniesList2').html(Handlebars.templates.showTestimonies(data)).trigger('create');
+    $('#testimoniesList').html(Handlebars.templates.showTestimonies(data)).trigger('create');
 }
 
 /**
@@ -61,10 +68,11 @@ function showPrayerNeeds() {
     var data = fetchItems(options.prayerneeds);
     $('#prayerneedsList').html(Handlebars.templates.showPrayerNeeds(data)).trigger('create');
 }
+
 function showNews() {
-    options.news.params = 3;
+    options.news.params = 10;
     var data = fetchItems(options.news);
-    $('#newsList').html(Handlebars.templates.showNews(data)).trigger('create');
+    $('#newsList').html(Handlebars.templates.showNewsArticles(data)).trigger('create');
 }
 function fetchItems(option) {
 
