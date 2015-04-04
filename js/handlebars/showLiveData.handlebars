@@ -20,7 +20,7 @@
             <tbody>
             {{#each countries }}
                 <tr>
-                    <td>{{@key}}</td>
+                    <td>{{@key}}{{ flagIconLink @key }}</td>
                     <td align="right">{{this}}</td>
                 </tr>
             {{/each}}
