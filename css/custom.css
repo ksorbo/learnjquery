@@ -27,7 +27,27 @@
 .flagicon{
     position:relative;
     top:10px;
+
 }
+
+.frontpagelogo{
+    display:block;
+    margin:0 auto;
+    margin-top:20px;
+    width:100%;
+    max-width:600px;
+}
+.frontpage{
+    font-size:3em;
+    text-align: center;
+
+}
+@media only screen and (max-width: 800px) {
+    .frontpage {
+        font-size: 1.75em;
+    }
+}
+
 /* http://www.objectpartners.com/2013/05/13/adding-a-sliding-menu-to-your-jquery-mobile-app/#tehcodez */
 .ui-panel-inner {
     padding:0px; /*make the buttons flush edge to edge*/

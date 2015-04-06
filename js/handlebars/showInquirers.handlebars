@@ -1,7 +1,7 @@
 <h1>Recent Inquiries</h1>
 <ul>
 {{#each .}}
-     <li><span style="text-transform:capitalize;font-weight:bold;">{{ decision }}</span> from a {{ genderToPerson gender }} in <strong>{{ country~}}</strong> {{ flagIconLink country~}}&nbsp;on  {{ shortenedDate datesubmitted }}</li>
+     <li>{{ flagIconLink country~}}&nbsp;<span style="text-transform:capitalize;font-weight:bold;">{{ decision }}</span> from a {{ genderToPerson gender }} in <strong>{{ country~}}</strong>&nbsp;on  {{ dateTime datesubmitted }}</li>
 
 {{/each}}
 </ul>

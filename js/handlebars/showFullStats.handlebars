@@ -68,7 +68,7 @@
                 <tbody>
                 {{#each inquirercountries}}
                     <tr>
-                        <td>{{counter @index }}. {{ country~}} {{ flagIconLink country~}}</td>
+                        <td>{{counter @index }}. {{ flagIconLink country~}}&nbsp;{{ country~}} </td>
                         <td align="right">{{ formatCurrency count }}</td>
                     </tr>
                 {{/each}}
@@ -112,7 +112,7 @@
                 <tbody>
                 {{#each responsecountries}}
                     <tr>
-                        <td>{{counter @index }}. {{ country~}} {{ flagIconLink country~}}</td>
+                        <td>{{counter @index }}. {{ flagIconLink country~}}&nbsp;{{ country~}} </td>
                         <td align="right">{{ formatCurrency count }}</td>
                     </tr>
                 {{/each}}
@@ -128,13 +128,13 @@
         <div class="datagrid">
             <table>
                 <thead>
-                <th>Country</th>
-                <th>Responses</th>
+                <th width="75%">Website</th>
+                <th width="25%">Responses</th>
                 </thead>
                 <tbody>
                 {{#each responsesites}}
                     <tr>
-                        <td>{{counter @index }}. {{ hostname~}}</td>
+                        <td>{{counter @index }}. {{ellipsisShorten hostname 25 }}</td>
                         <td align="right">{{ formatCurrency count }}</td>
                     </tr>
                 {{/each}}

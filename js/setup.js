@@ -15,7 +15,7 @@ var options = {
     },
     'prayerneeds': {
         'type': 'prayerneeds',
-        'count': 15,
+        'count': 10,
         'order': 'desc',
         'period': 'thisyear',
         'cachetime': 86400,

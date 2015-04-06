@@ -1,20 +1,46 @@
 <div id="setoptions">
-    <h2>Set options</h2>
+    <h1>Set options</h1>
+
+    <h2>Cache Time</h2>
 
     <div data-role="rangeslider">
         <label for="liveDataCacheTime">Live Data Cache Time (seconds)</label>
-        <input name="liveDataCacheTime" data-multiplier=1 id="liveDataCacheTime" min="60" max="1200" step="30" value="60" type="range"/>
+        <input name="liveDataCacheTime" data-multiplier=1 id="liveDataCacheTime" min="60" max="1200" step="30"
+               value="60" type="range"/>
     </div>
     <div data-role="rangeslider">
         <label for="fullStatsCacheTime">Project100Million Stats Cache Time (seconds)</label>
-        <input name="fullStatsCacheTime" data-multiplier=1  id="fullStatsCacheTime" min="60" max="1200" step="30" value="90" type="range"/>
+        <input name="fullStatsCacheTime" data-multiplier=1 id="fullStatsCacheTime" min="60" max="1200" step="30"
+               value="90" type="range"/>
     </div>
     <div data-role="rangeslider">
         <label for="prayerTestimoniesCacheTime">Prayer Request and Testimonies Cache Time (hours)</label>
-        <input name="prayerTestimoniesCacheTime" data-multiplier=3600  id="prayerTestimoniesCacheTime" min="5" max="168" step="5" value="72" type="range"/>
+        <input name="prayerTestimoniesCacheTime" data-multiplier=3600 id="prayerTestimoniesCacheTime" min="5" max="168"
+               step="5" value="72" type="range"/>
+    </div>
+    <h2>Number of Items to Show</h2>
+    <div data-role="rangeslider">
+        <label for="numberofresponses">Number of Recent Responses To Show</label>
+        <input name="numberofresponses" data-multiplier=1 id="numberofresponses" min="5" max="100" step="1" value="20"
+               type="range"/>
+    </div>
+    <div data-role="rangeslider">
+        <label for="numberofinquirers">Number of Recent Inquirers to Show</label>
+        <input name="numberofinquirers" data-multiplier=1 id="numberofinquirers" min="5" max="100" step="1" value="20"
+               type="range"/>
+    </div>
+    <div data-role="rangeslider">
+        <label for="numberoftestimonies">Number of Testimonies to Show</label>
+        <input name="numberoftestimonies" data-multiplier=1 id="numberoftestimonies" min="5" max="50" step="1"
+               value="10" type="range"/>
+    </div>
+    <div data-role="rangeslider">
+        <label for="numberofprayerneeds">Number of Testimonies to Show</label>
+        <input name="numberofprayerneeds" data-multiplier=1 id="numberofprayerneeds" min="5" max="50" step="1"
+               value="10" type="range"/>
     </div>
     <!--<div data-role="rangeslider">-->
-        <!--<label for="liveDataCacheTime">Live Data Cache Time</label>-->
-        <!--<input name="liveDataCacheTime" id="liveDataCacheTime" min="60" max="1200" step="30" value="60" type="range"/>-->
+    <!--<label for="liveDataCacheTime">Live Data Cache Time</label>-->
+    <!--<input name="liveDataCacheTime" id="liveDataCacheTime" min="60" max="1200" step="30" value="60" type="range"/>-->
     <!--</div>-->
 </div>
