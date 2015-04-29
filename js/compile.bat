@@ -1,0 +1,1 @@
+handlebars handlebars/ -f templates.js -k if -k formatCurrency -k genderToPerson -k flagIconLink -k shortenedDate -k each -k mediumDate

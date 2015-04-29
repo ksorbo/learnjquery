@@ -3,6 +3,9 @@
  */
 var rootDomain = 'http://rest.net211.com/';
 var options = {
+    'home':{
+        'cachetime': 120
+    },
     'testimonies': {
         'type': 'testimonies',
         'count': 10,
@@ -78,13 +81,24 @@ var options = {
 $(document).ready(function () {
 
     loadOptions();
+    showHome();
     $('#button-bars').css('margin-top', '3px');
-    $('#select-stats-period').change(function () {
-        var param = $('#select-stats-period option:selected').val();
-        showFullStats(param);
-    });
 
-    $(document).on('pagebeforeshow', '#home', showHome);
+    $(document).on('pageshow', '#home', function(){
+        //showHome();
+        options.home.timer = setInterval(showHome, options.home.cachetime * 1000);
+        //options.home.clock = setInterval(function(){
+        //    var d = new Date();
+        //    $('#home-tmp').html(d.getHours() + ':' + d.getMinutes()+':'+d.getSeconds());
+        //},
+        //1000);
+    });
+    $(document).on('pagehide','#home',function(){
+        if(options.home.timer){
+            clearInterval(options.home.timer);
+
+        }
+    })
     $(document).on('pagebeforeshow', '#debug', showLocalStorage);
     $(document).on('pagebeforeshow', '#prayerneeds', showPrayerNeeds);
     $(document).on('pagebeforeshow', '#news', showNews);
@@ -92,7 +106,7 @@ $(document).ready(function () {
     $(document).on('pagebeforeshow', '#responses', showResponses);
     $(document).on('pagebeforeshow', '#testimonies', showTestimonies);
 
-    $(document).on('pagebeforeshow', '#fullstats', function () {
+    $(document).on('pageshow', '#fullstats', function () {
         showFullStats('all');
     });
     //OPTIONS
@@ -100,7 +114,7 @@ $(document).ready(function () {
     $(document).on('pagehide', '#options', saveOptions);
 
     //LIVE DATA
-    $(document).on('pagebeforeshow', '#livedata', function () {
+    $(document).on('pageshow', '#livedata', function () {
         showLiveDataTotal();
         options.livedata.timer = setInterval(showLiveDataTotal, options.livedata.cachetime * 1000);
     });
@@ -109,11 +123,26 @@ $(document).ready(function () {
             clearInterval(options.livedata.timer);
         }
     });
-    //$(document).ajaxStart(function () {
-    //    //show ajax indicator
-    //    ajaxindicatorstart('loading data.. please wait..');
-    //}).ajaxStop(function () {
-    //    //hide ajax indicator
-    //    ajaxindicatorstop();
-    //});
+    $('#prayertaskforcesignup').submit(function(e){
+        sendprayersignup();
+        e.preventDefault();
+    });
+
+});
+
+
+// add parser through the tablesorter addParser method
+$.tablesorter.addParser({
+    // set a unique id
+    id: 'removecomma',
+    is: function(s) {
+        // return false so this parser is not auto detected
+        return false;
+    },
+    format: function(s) {
+        // format your data for normalization
+        return s.replace(/,/g,'');
+    },
+    // set type, either numeric or text
+    type: 'numeric'
 });

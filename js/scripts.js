@@ -13,10 +13,10 @@ function showOptions() {
     loadOptions();
     $('#fullStatsCacheTime').val(options.fullstats.cachetime);
     $('#liveDataCacheTime').val(options.livedata.cachetime);
-    $('#prayerTestimoniesCacheTime').val(options.testimonies.cachetime/3600);
+    $('#prayerTestimoniesCacheTime').val(options.testimonies.cachetime / 3600);
 }
-function loadOptions(){
-    if(localStorage.getItem('options') !== null) {
+function loadOptions() {
+    if (localStorage.getItem('options') !== null) {
         var restored = JSON.parse(localStorage.getItem('options'));
         options.livedata.cachetime = restored.liveDataCacheTime;
         options.testimonies.cachetime = restored.prayerTestimoniesCacheTime;
@@ -27,11 +27,11 @@ function loadOptions(){
 function saveOptions() {
     var fullStats = $('#fullStatsCacheTime').val()
     var liveStats = $('#liveDataCacheTime').val();
-    var prayerTestimonies = $('#prayerTestimoniesCacheTime').val()*3600;
+    var prayerTestimonies = $('#prayerTestimoniesCacheTime').val() * 3600;
     var options = {
         'fullStatsCacheTime': fullStats,
-        'liveDataCacheTime':liveStats,
-        'prayerTestimoniesCacheTime':prayerTestimonies
+        'liveDataCacheTime': liveStats,
+        'prayerTestimoniesCacheTime': prayerTestimonies
     };
     localStorage.setItem('options', JSON.stringify(options));
     loadOptions();
@@ -50,22 +50,69 @@ function showResponses() {
 function clearCache() {
     var options = localStorage.getItem('options');
     localStorage.clear();
-    localStorage.setItem('options',options);
+    localStorage.setItem('options', options);
     //showTestimonies(15, 'desc', 'thisyear');
     $.mobile.navigate('#debug');
 }
 function showHome() {
-    //var data = fetchItems(options.totals);
-    //$('#totalsarea').html(Handlebars.templates.showTotals(data)).trigger('create');
-    $('#homecontent').trigger('create');
+    var data = fetchItems(options.totals);
+    var h = Handlebars.templates.showHome(data);
+    $('#homepage-data').html(h).trigger('create');
+    //$('#homecontent').trigger('create');
+}
+function sendprayersignup(){
+    //alert('submitting');
+    var theData = $('#prayertaskforcesignup').serialize();
+    $.ajax({
+        url : 'http://rest.net211.com/prayersignup',
+        type: 'get',
+        dataType: 'json',
+        data: theData,
+        complete: function(data){
+            var message = '<div class="signup-response ui-corner-all">' + JSON.parse(data.responseText)[0]+'</div>';
+            $('#prayertaskforceresponse').html(message).trigger('create');
+            $('#prayertaskforceresponse').delay(5000).fadeOut();
+            //alert(data[0]);
+        },
+        failure: function(){}
+    });
+
 }
 function showFullStats(param) {
     ajaxindicatorstart('Loading Project100Million Stats')
     options.fullstats.params = param;
     var data = fetchItems(options.fullstats);
     var h = Handlebars.templates.showFullStats(data);
+    h += buildYearPicker();
     $('#fullstatsDiv').html(h).trigger('create');
     ajaxindicatorstop();
+    $('#full-inquirer-countries').tablesorter({headers: {2: {sorter: 'removecomma'}}});
+    $('#full-inquirer-sites').tablesorter({headers: {1: {sorter: 'removecomma'}}});
+    $('#full-response-countries').tablesorter({headers: {2: {sorter: 'removecomma'}}});
+    $('#full-response-sites').tablesorter({headers: {1: {sorter: 'removecomma'}}});
+    $('#full-visits-countries').tablesorter({headers: {2: {sorter: 'removecomma'}}});
+    $('#full-visits-sites').tablesorter({headers: {1: {sorter: 'removecomma'}}});
+    $('#select-stats-period').change(function () {
+        var param = $('#select-stats-period option:selected').val();
+        $('#fullstatsDiv').html(loadingScreen()).trigger('create');
+
+        showFullStats(param);
+    });
+}
+function loadingScreen(){
+    return "<h1>Loading...</h1>";
+}
+function buildYearPicker() {
+    var ret = '<form><div class="ui-field-contain"><label for="select-stats-period">Select Period to View</label><br>';
+        ret +='<select name="select-stats-period" id="select-stats-period"><option value="all" selected="selected">All Data</option>';
+    var dteNow = new Date();
+    var intYear = dteNow.getFullYear();
+    var i;
+    for (i = intYear; i > 2007; i--) {
+        ret += '<option value="' + i + '-01-01/' + i + '-12-31">'+i+'</option>';
+    }
+    ret += '</select></div></form>';
+    return ret;
 }
 function showTotals() {
     //var output = '';

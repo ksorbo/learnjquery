@@ -13,6 +13,10 @@ Handlebars.registerHelper('shortenedDate',function(longdate){
    return longdate.substring(0,10);
 });
 
+Handlebars.registerHelper('mediumDate',function(longdate){
+    return longdate.substring(0,16);
+});
+
 Handlebars.registerHelper("counter", function (index){
     return index + 1;
 });

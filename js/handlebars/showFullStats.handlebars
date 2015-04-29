@@ -18,7 +18,11 @@
             <td>&nbsp;</td>
             <td align="right">{{ formatCurrency responses }}</td>
         </tr>
-
+        <tr>
+            <td>Discipleship Connections</td>
+            <td>&nbsp;</td>
+            <td align="right">{{ formatCurrency inquirers }}</td>
+        </tr>
         <tr>
             <td>Salvations</td>
             <td align="right">{{ formatCurrency salvations }}</td>
@@ -45,32 +49,34 @@
             <td align="right">{{  formatCurrency subscriptions }}</td>
             <td>&nbsp;</td>
         </tr>
-        <tr>
-            <td>Inquirers</td>
-            <td>&nbsp;</td>
-            <td align="right">{{ formatCurrency inquirers }}</td>
-        </tr>
+
         </tbody>
     </table>
 </div>
 
 
 <div data-role="collapsible-set">
-    <div data-role="collapsible" >
-        <h2>Inquirer Countries</h2>
+    <div data-role="collapsible">
+        <h2>Visitor Nations</h2>
 
         <div class="datagrid">
-            <table>
+            <table id="full-visits-countries" class="tablesorter">
                 <thead>
+                <th>&nbsp;</th>
                 <th>Country</th>
-                <th>Inquirers</th>
+                <th>Visitors</th>
                 </thead>
                 <tbody>
-                {{#each inquirercountries}}
-                    <tr>
-                        <td>{{counter @index }}. {{ country~}} {{ flagIconLink country~}}</td>
-                        <td align="right">{{ formatCurrency count }}</td>
-                    </tr>
+                {{#each visitscountries}}
+                    {{#if country}}
+                        <tr>
+                            <!--<td>{{counter @index }}. {{ flagIconLink country~}}&nbsp; {{ country~}} </td>-->
+                            <td class="flag-align"> {{ flagIconLink country~}}</td>
+                            <td> {{ country~}} </td>
+
+                            <td align="right">{{ formatCurrency count }}</td>
+                        </tr>
+                    {{/if}}
                 {{/each}}
                 </tbody>
 
@@ -78,65 +84,123 @@
 
         </div>
     </div>
-    <div data-role="collapsible" >
-        <h2>Sites the Inquires Came From</h2>
+    <div data-role="collapsible">
+        <h2>Visitor Sites</h2>
 
         <div class="datagrid">
-            <table>
+            <table id="full-visits-sites" class="tablesorter">
+                <thead>
+                <th>Website</th>
+                <th>Visits</th>
+                </thead>
+                <tbody>
+                {{#each visitssites}}
+                    {{#if hostname}}
+                        <tr>
+                            <td>{{ hostname~}}</td>
+                            <td align="right">{{ formatCurrency count }}</td>
+                        </tr>
+                    {{/if}}
+                {{/each}}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    <div data-role="collapsible">
+        <h2>Evangelism Response Nations</h2>
+
+        <div class="datagrid">
+            <table id="full-response-countries" class="tablesorter">
+                <thead>
+                <th>&nbsp;</th>
+                <th>Nation</th>
+                <th>Responses</th>
+                </thead>
+                <tbody>
+                {{#each responsecountries}}
+                    {{#if country}}
+                        <tr>
+                            <!--<td>{{counter @index }}. {{ flagIconLink country~}}&nbsp; {{ country~}} </td>-->
+                            <td class="flag-align"> {{ flagIconLink country~}}</td>
+                            <td> {{ country~}} </td>
+
+                            <td align="right">{{ formatCurrency count }}</td>
+                        </tr>
+                    {{/if}}
+                {{/each}}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    <div data-role="collapsible">
+        <h2>Evangelism Response Sites</h2>
+
+        <div class="datagrid">
+            <table id="full-response-sites" class="tablesorter">
+                <thead>
+                <th>Website</th>
+                <th>Responses</th>
+                </thead>
+                <tbody>
+                {{#each responsesites}}
+                    {{#if hostname}}
+                        <tr>
+                            <td>{{ hostname~}}</td>
+                            <td align="right">{{ formatCurrency count }}</td>
+                        </tr>
+                    {{/if}}
+                {{/each}}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    <div data-role="collapsible">
+        <h2>Discipleship Connection Nations</h2>
+
+        <div class="datagrid">
+            <table id="full-inquirer-countries" class="tablesorter">
+                <thead>
+                <th>Nation</th>
+                <th>Connections</th>
+                </thead>
+                <tbody>
+                {{#each inquirercountries}}
+                    {{#if country }}
+                        <tr>
+                            <td>{{ flagIconLink country~}}&nbsp;{{ country~}}</td>
+                            <td align="right">{{ formatCurrency count }}</td>
+                        </tr>
+                    {{/if}}
+                {{/each}}
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+    <div data-role="collapsible">
+        <h2>Dicipleship Connections Sites</h2>
+
+        <div class="datagrid">
+            <table id="full-inquirer-sites" class="tablesorter">
                 <thead>
                 <th>Website</th>
                 <th>Inquirers</th>
                 </thead>
                 <tbody>
                 {{#each inquirersites}}
-                    <tr>
-                        <td>{{counter @index }}. {{ hostname }}</td>
-                        <td align="right">{{ formatCurrency count }}</td>
-                    </tr>
-                {{/each}}
-                </tbody>
-
-            </table>
-
-        </div>
-    </div>
-    <div data-role="collapsible" >
-        <h2>Countries Responses Came From</h2>
-
-        <div class="datagrid">
-            <table>
-                <thead>
-                <th>Country</th>
-                <th>Responses</th>
-                </thead>
-                <tbody>
-                {{#each responsecountries}}
-                    <tr>
-                        <td>{{counter @index }}. {{ country~}} {{ flagIconLink country~}}</td>
-                        <td align="right">{{ formatCurrency count }}</td>
-                    </tr>
-                {{/each}}
-                </tbody>
-
-            </table>
-
-        </div>
-    </div>
-    <div data-role="collapsible" >
-        <h2>Sites the Responses Came From</h2>
-
-        <div class="datagrid">
-            <table>
-                <thead>
-                <th>Country</th>
-                <th>Responses</th>
-                </thead>
-                <tbody>
-                {{#each responsesites}}
-                    <tr>
-                        <td>{{counter @index }}. {{ hostname~}}</td>
-                        <td align="right">{{ formatCurrency count }}</td>
-                    </tr>
+                    {{#if hostname}}
+                        <tr>
+                            <td>{{ hostname }}</td>
+                            <td align="right">{{ formatCurrency count }}</td>
+                        </tr>
+                    {{/if}}
                 {{/each}}
                 </tbody>
 

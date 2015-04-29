@@ -3,11 +3,13 @@
         {{ total }}
     </div>
     <p class="visitors">Visitors on All Sites</p>
+
+    <img style="width:450px;display:block;clear:both;float:none;margin:0 auto;" src="http://rest.net211.com/imgcache/livedata.jpg">
 </div>
-<a href="#" onclick="refreshLiveStats()" data-role="button">Refresh</a>
+<!--<a href="#" onclick="refreshLiveStats()" data-role="button">Refresh</a>-->
 <div data-role="collapsible-set">
 <div data-role="collapsible" class="ui-collapsible ui-collapsible-inset ui-collapsible-collapsed">
-    <h3>Countries Visitors are From</h3>
+    <h3>Visitor Nations</h3>
 
     <div class="datagrid">
         <table>
@@ -20,7 +22,7 @@
             <tbody>
             {{#each countries }}
                 <tr>
-                    <td>{{@key}}{{ flagIconLink @key }}</td>
+                    <td>{{ flagIconLink @key }}&nbsp;{{@key}}</td>
                     <td align="right">{{this}}</td>
                 </tr>
             {{/each}}
@@ -31,7 +33,7 @@
     </div>
 </div>
 <div data-role="collapsible" class="ui-collapsible ui-collapsible-inset ui-collapsible-collapsed">
-    <h3>Websites Being Visited</h3>
+    <h3>Visitor Websites</h3>
     <div class="datagrid">
         <table>
             <thead>

@@ -1,7 +1,7 @@
-<h1>Recent Responses</h1>
+<h1>Recent Evangelism Responses</h1>
 
-<ul>
+<ul class="response-list">
     {{#each .}}
-        <li>{{ flagIconLink country~}}&nbsp;From <strong>{{ country~}}</strong>{{ flagIconLink country }}&nbsp;on  {{ visitdate }}</li>
+        <li>{{ flagIconLink country~}}&nbsp;From <strong>{{ country~}}</strong>&nbsp;on  {{ visitdate }}</li>
     {{/each}}
 </ul>

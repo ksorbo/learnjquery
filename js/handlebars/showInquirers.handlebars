@@ -1,7 +1,6 @@
-<h1>Recent Inquiries</h1>
-<ul>
+<h1>Recent Discipleship Connections</h1>
+<ul class="inquirer-list">
 {{#each .}}
-     <li><span style="text-transform:capitalize;font-weight:bold;">{{ decision }}</span> from a {{ genderToPerson gender }} in <strong>{{ country~}}</strong> {{ flagIconLink country~}}&nbsp;on  {{ shortenedDate datesubmitted }}</li>
-
+     <li>{{ flagIconLink country~}}&nbsp;<span style="text-transform:capitalize;font-weight:bold;"> {{ decision }}</span> from a {{ genderToPerson gender }} in <strong>{{ country~}}</strong>&nbsp;on  {{ mediumDate datesubmitted }}</li>
 {{/each}}
 </ul>

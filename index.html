@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Page</title>
+    <title>Network211 Reporter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Include jQuery Mobile stylesheets -->
     <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile.flatui.css">-->
     <!-- Include the jQuery library -->
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css"/>
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css"/>-->
+    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css"/>
+    <!--<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>-->
+    <!--<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>-->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.mobile-1.3.1.min.js"></script>
     <!--<script src="js/jquery.mmenu.min.all.js"></script>-->
     <!--<link rel="stylesheet" href="css/jquery.mmenu.all.css">-->
     <link rel="stylesheet" href="css/custom.css">
-
+    <link rel="stylesheet" href="css/tablesorter.css">
     <script src="js/utilities.js"></script>
 
     <!-- Include the jQuery Mobile library -->
     <!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
     <script src="js/handlebars.runtime.min.js"></script>
+    <script src="js/jquery.tablesorter.min.js"></script>
     <script src="js/helpers.js"></script>
     <script src="js/templates.js"></script>
     <script src="js/scripts.js"></script>
@@ -33,42 +37,129 @@
         <div data-role="panel" id="navpanel" data-theme="a"
              data-display="overlay" data-position="right">
             <div data-role="controlgroup" data-corners="false">
+                <a data-role="button"
+                   href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
                 <a href="#fullstats" data-role="button">Project100Millions Stats</a>
-                <a href="#livedata" data-role="button">Live Data (takes a moment to load)</a>
-                <a href="#inquirers" data-role="button">Recent Inquirers</a>
-                <a href="#responses" data-role="button">Recent Responses</a>
+                <a href="#livedata" data-role="button">Live Data</a>
+                <a href="#inquirers" data-role="button">Recent Discipleship Connections</a>
+                <a href="#responses" data-role="button">Recent Evangelism Responses</a>
                 <a href="#testimonies" data-role="button">Testimonies</a>
                 <a href="#prayerneeds" data-role="button">Prayer Needs</a>
+                <a href="#prayertaskforce" data-role="button">Prayer Task Force</a>
                 <a href="#news" data-role="button">News From Network211</a>
+                <a href="#aboutus" data-role="button">About Us / Help</a>
                 <a href="#options" data-role="button">Options</a>
+                <a href="#debug" data-role="button">Debug</a>
 
             </div>
         </div>
         <div data-role="header" data-theme="b" class="ui-header">
-            <a id="bars-button" data-icon="bars"  class="ui-btn-right" style="margin-top:3px;" href="#navpanel">Menu</a>
+            <a id="bars-button" data-icon="bars" class="ui-btn-right" style="margin-top:3px;" href="#navpanel">Menu</a>
+
             <h1>Network211</h1>
         </div>
         <article data-role="content" class="ui-content" id="homecontent">
+            <div class="homepage-centered">
+                <a href="http://project100million.com"><img style="float:left" src="img/p100mlogo.png" width="15%"></a>
 
+                <p style="float:left;text-align:center;width:62%;padding:0 4%;"><strong>Project100Million</strong><br> Reaching the World
+                    with the Word</p>
+                <a href="http://network211.com">
+                    <img style="float:right; margin-top:8px;" src="img/N211LogoNew.png" width="15%"></a>
+
+                <div style="clear:both" id="homepage-data"></div>
+                <div id="home-tmp"></div>
+
+
+                <a data-role="button" data-theme="e"
+                   href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate to Network211's World-wide Evangelism</a>
+                <img style="width:100%;max-width:640px" src="http://rest.net211.com/inquirermap/30/75">
+
+                <p style="text-align:center;margin-top:3px;text-shadow: none;">Countries with Discipleship Connections
+                    in the Last 30 Days</p>
+            </div>
+        </article>
+    </div>
+    <!--About Us-->
+    <div data-role="page" id="aboutus">
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
+
+            <h1>About Us</h1>
+        </div>
+        <article data-role="content" id="aboutusList">
+            <h2>Who we are:</h2>
+
+            <p><a href="http://project10million.com" target="_blank">Project100Million</a> is an evangelism ministry
+                of<a href="http://network211.com" target="_blank"> Network211</a>. Our goal is to reach 100
+                million individuals with the Gospel using the Internet.
+            </p>
+
+            <h2>Our Evangelism Sites</h2>
+            <ul>
+                <li><a href="http://whojesusis.com" target="_blank">WhoJesusIs.com</a> - English</li>
+                <li><a href="http://Journeyanswers.com" target="_blank">Journeyanswers.com</a> - English</li>
+                <li><a href="http://Teranghidup.com" target="_blank">Teranghidup.com</a> - Indonesian</li>
+                <li><a href="http://pasokhha.com/" target="_blank">Pasokhha.com</a> - Farsi</li>
+                <li><a href="http://Buochyvong.com" target="_blank">Buochyvong.com</a> - Vietnamese</li>
+                <li><a href="http://renshengdaan.com/" target="_blank">Renshengdaan.com</a> - Mandarin (Chinese)</li>
+                <li><a href="http://respuestasdelavida.com/" target="_blank">Respuestasdelavida.com</a> - Spanish</li>
+                <li><a href="http://nedaaal-ragah.com" target="_blank">Nedaaal-Ragah.com</a> - Arabic</li>
+                <li><a href="http://deaf.journeyanswers.com" target="_blank">ASL Sign Language</a> - English</li>
+                <li><a href="http://family-relationships.com" target="_blank">Family-Relationships.com</a> - English
+                </li>
+                <!-- <li><a href="http://Journeyanswers.ph" target="_blank">Journeyanswers.ph</a> - Filipino</li> -->
+            </ul>
+            <h2>What do all those numbers mean?</h2>
+
+            <p>The purpose of this app is to allow you to view the most recent statistics from Project100Million. </p>
+            <ul>
+                <li><strong>Total Visitors</strong> - This is the number of visitors to all of our evangelism websites
+                    beginning in 2008.
+                </li>
+                <!-- <li><strong>30 Days</strong> - The number of visitors to our sites within the last 30 days.</li> -->
+                <li><strong>Evangelism Response</strong> - The number of individuals who have come to our site,
+                    viewed a presentation and clicked one of our response buttons (&quot;Yes, I prayed the prayer&quot;,
+                    &quot;I still have questions,&quot; or &quot;Prayer Request&quot;)
+                </li>
+                <li><strong>Discipleship Connection</strong>. - The number of visitors to our site who have not
+                    only clicked a response button but have entered their email address, name, gender and indicated
+                    which type of response they have made. Our volunteer connectors then make a personal contact with
+                    each individual to begin a Discipleship Connection.
+                </li>
+                <li><strong>Salvations</strong> - An individual has indicated that they have received Christ</li>
+                <li><strong>Recommitment</strong> - An individual has recommitted their life to Christ</li>
+                <li><strong>Question</strong> - An individual has asked a question</li>
+                <li><strong>Prayer Need</strong> - An individual has submitted a prayer need.</li>
+                <li><strong>Subscription</strong> - An individual has subscribed to one of our discipleship email series
+                </li>
+            </ul>
 
         </article>
     </div>
-
     <!--Live Data-->
     <div data-role="page" id="livedata">
         <div data-role="header" data-theme="b" class="ui-header">
-            <a data-role="button" href="#home">Home</a>
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
 
             <h1>Live Data</h1>
         </div>
         <article data-role="content" id="livedataList">
+            <h1 class="loading">Loading...</h1>
         </article>
     </div>
 
     <!--NEWS-->
     <div data-role="page" id="news" onload="showNews();">
         <div data-role="header" data-theme="b" class="ui-header">
-            <a data-role="button" href="#home">Home</a>
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
+
 
             <h1>News From Network211</h1>
         </div>
@@ -78,39 +169,81 @@
         </article>
     </div>
 
+    <!--Prayer Task Force-->
+    <div data-role="page" id="prayertaskforce" onload="showNews();">
+        <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
+
+            <h1>Prayer Task Force</h1>
+        </div>
+        <article data-role="content" id="prayertaskforcedata">
+
+            <h1>Prayer Task Force</h1>
+
+            <p>Network211's Prayer Task Force is a group of people who have a burden to pray for needy people. Every
+                week
+                Network211 receives 100's of desparate needs from people all around the world.
+                Our Connections manager reviews each needs and selects 8-15 needs each week. Members of the prayer task
+                force receive an email with these needs once a week together with needs from the Network office.</p>
+
+            <p>
+                If you would like to become a member of the prayer task force, please enter your name,email address and
+                language preference below.</p>
+
+            <div id="prayertaskforceresponse" ></div>
+            <form id="prayertaskforcesignup" action="http://rest.net211.com/prayersignup" data-ajax="false" method="get">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" value=""/>
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" value=""/>
+                <fieldset data-role="controlgroup">
+                    <legend>Select a language:</legend>
+                    <input type="radio" name="language" id="language-en" value="en" checked="checked"/>
+                    <label for="language-en">English</label>
+                    <input type="radio" name="language" id="language-es" value="es"/>
+                    <label for="language-es">Spanish</label>
+                </fieldset>
+                <div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span"
+                     data-icon="null" data-iconpos="null" data-theme="b"
+                     class="ui-btn ui-shadow ui-btn-corner-all ui-submit ui-btn-up-b" aria-disabled="false">
+
+                    <button type="submit" data-theme="b" name="submit" value="submit-value" class="ui-btn-hidden" aria-disabled="false">Submit</button>
+                </div>
+
+
+            </form>
+
+            <!-- /header -->
+
+        </article>
+    </div>
+
     <!--Fullstats-->
     <div data-role="page" id="fullstats" onload="showFullStats();">
         <div data-role="header" data-theme="b" class="ui-header">
-            <a data-role="button" href="#home">Home</a>
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
 
             <h1>Project100Million Statistics</h1>
         </div>
         <!-- /header -->
         <article data-role="content" id="fullstatsList">
-            <div id="fullstatsDiv"></div>
-            <form>
-                <div class="ui-field-contain"><label for="select-stats-period">Select Period to View</label>
-                    <select name="select-stats-period" id="select-stats-period">
-                        <option value="all" selected="selected">All Data</option>
-                        <option value="2015-01-01/2015-12-31">2015</option>
-                        <option value="2014-01-01/2014-12-31">2014</option>
-                        <option value="2013-01-01/2013-12-31">2013</option>
-                        <option value="2012-01-01/2012-12-31">2012</option>
-                        <option value="2011-01-01/2011-12-31">2011</option>
-                        <option value="2010-01-01/2010-12-31">2010</option>
-                        <option value="2009-01-01/2009-12-31">2009</option>
-                            </select>
-                </div>
-            </form>
+            <div id="fullstatsDiv">Loading...</div>
+
         </article>
     </div>
 
     <!--Inquirers -->
     <div data-role="page" id="inquirers" onload="showInquirers();">
         <div data-role="header" data-theme="b" class="ui-header">
-            <a data-role="button" href="#home">Home</a>
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
 
-            <h1>Recent Inquirers</h1>
+            <h1>Recent Discipleship Connections</h1>
         </div>
         <!-- /header -->
         <article data-role="content" id="inquirersList">
@@ -121,9 +254,11 @@
     <!--Responses-->
     <div data-role="page" id="responses" onload="showResponses();">
         <div data-role="header" data-theme="b" class="ui-header">
-            <a data-role="button" href="#home">Home</a>
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
 
-            <h1>Recent Responses</h1>
+            <h1>Recent Evangelism Responses</h1>
         </div>
         <!-- /header -->
         <article data-role="content" id="responsesList">
@@ -133,7 +268,9 @@
     <!--PrayerNeeds-->
     <div data-role="page" id="prayerneeds" onload="showPrayerNeeds();">
         <div data-role="header" data-theme="b" class="ui-header">
-            <a data-role="button" href="#home">Home</a>
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
 
             <h1>Prayer Needs from Inquirers</h1>
         </div>
@@ -145,7 +282,9 @@
     <!--Testimonies-->
     <div data-role="page" id="testimonies">
         <div data-role="header" data-theme="b" class="ui-header">
-            <a data-role="button" href="#home">Home</a>
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
 
             <h1>Testimonies</h1>
         </div>
@@ -160,7 +299,9 @@
     <!--Options-->
     <div data-role="page" id="options">
         <div data-role="header" data-theme="b" class="ui-header">
-            <a data-role="button" href="#home">Home</a>
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
 
             <h1>Options</h1>
         </div>
@@ -175,11 +316,15 @@
     <!--Debug-->
     <div data-role="page" id="debug" onload="showLocalStorage();">
         <div data-role="header" data-theme="b" class="ui-header">
+            <a data-role="button" href="#home">Back</a>
+            <a data-role="button"
+               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
 
-            <button onclick="clearCache();">Clear Cache</button>
+
             <h1>Debug Page</h1>
         </div>
         <!-- /header -->
+        <button onclick="clearCache();">Clear Cache</button>
         <article data-role="content" id="debugcontent">
 
         </article>
