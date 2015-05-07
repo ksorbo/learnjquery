@@ -46,6 +46,16 @@ function getCache(keyName, age) {
     }
     return null;
 }
+
+function localStorageConsumed(){
+    var sizeBytes=0;
+    var i;
+    for (i = 0; i < localStorage.length; i++) {
+        sizeBytes += localStorage.getItem(localStorage.key(i)).length;
+    }
+    return sizeBytes
+
+}
 function ajaxindicatorstart(text)
 {
     if(jQuery('body').find('#resultLoading').attr('id') != 'resultLoading'){

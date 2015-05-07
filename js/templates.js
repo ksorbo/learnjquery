@@ -172,17 +172,18 @@ templates['showNewsArticles'] = template({"1":function(depth0,helpers,partials,d
     + "\r\n</div>";
 },"useData":true});
 templates['showOptions'] = template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div id=\"setoptions\">\r\n    <h2>Set options</h2>\r\n\r\n    <div data-role=\"rangeslider\">\r\n        <label for=\"liveDataCacheTime\">Live Data Cache Time (seconds)</label>\r\n        <input name=\"liveDataCacheTime\" data-multiplier=1 id=\"liveDataCacheTime\" min=\"60\" max=\"1200\" step=\"30\" value=\"60\" type=\"range\"/>\r\n    </div>\r\n    <div data-role=\"rangeslider\">\r\n        <label for=\"fullStatsCacheTime\">Project100Million Stats Cache Time (seconds)</label>\r\n        <input name=\"fullStatsCacheTime\" data-multiplier=1  id=\"fullStatsCacheTime\" min=\"60\" max=\"1200\" step=\"30\" value=\"90\" type=\"range\"/>\r\n    </div>\r\n    <div data-role=\"rangeslider\">\r\n        <label for=\"prayerTestimoniesCacheTime\">Prayer Request and Testimonies Cache Time (hours)</label>\r\n        <input name=\"prayerTestimoniesCacheTime\" data-multiplier=3600  id=\"prayerTestimoniesCacheTime\" min=\"5\" max=\"168\" step=\"5\" value=\"72\" type=\"range\"/>\r\n    </div>\r\n    <!--<div data-role=\"rangeslider\">-->\r\n        <!--<label for=\"liveDataCacheTime\">Live Data Cache Time</label>-->\r\n        <!--<input name=\"liveDataCacheTime\" id=\"liveDataCacheTime\" min=\"60\" max=\"1200\" step=\"30\" value=\"60\" type=\"range\"/>-->\r\n    <!--</div>-->\r\n</div>";
+    return "<div id=\"setoptions\">\r\n    <h2>Set options</h2>\r\n    <div data-role=\"rangeslider\">\r\n        <label for=\"numberofresponses\">Number of Recent Evangelism Responses to Request</label>\r\n        <input name=\"numberofresponses\" data-multiplier=3600  id=\"numberofresponses\" min=\"5\" max=\"50\" step=\"1\" value=\"15\" type=\"range\"/>\r\n    </div>\r\n    <div data-role=\"rangeslider\">\r\n        <label for=\"numberofinquirers\">Number of Discipleship Connections to Request</label>\r\n        <input name=\"numberofinquirers\" data-multiplier=3600  id=\"numberofinquirers\" min=\"5\" max=\"50\" step=\"1\" value=\"15\" type=\"range\"/>\r\n    </div>\r\n    <div data-role=\"rangeslider\">\r\n        <label for=\"numberoftestimonies\">Number of Testimonies to Request</label>\r\n        <input name=\"numberoftestimonies\" data-multiplier=3600  id=\"numberoftestimonies\" min=\"5\" max=\"30\" step=\"1\" value=\"10\" type=\"range\"/>\r\n    </div>\r\n    <div data-role=\"rangeslider\">\r\n        <label for=\"numberofprayerrequests\">Number of Prayer Needs to Request</label>\r\n        <input name=\"numberofprayerrequests\" data-multiplier=3600  id=\"numberofprayerrequests\" min=\"5\" max=\"30\" step=\"1\" value=\"10\" type=\"range\"/>\r\n    </div>\r\n\r\n    <div data-role=\"rangeslider\">\r\n        <label for=\"liveDataCacheTime\">Live Data Cache Time (seconds)</label>\r\n        <input name=\"liveDataCacheTime\" data-multiplier=1 id=\"liveDataCacheTime\" min=\"60\" max=\"1200\" step=\"30\" value=\"60\" type=\"range\"/>\r\n    </div>\r\n    <div data-role=\"rangeslider\">\r\n        <label for=\"fullStatsCacheTime\">Project100Million Stats Cache Time (seconds)</label>\r\n        <input name=\"fullStatsCacheTime\" data-multiplier=1  id=\"fullStatsCacheTime\" min=\"60\" max=\"1200\" step=\"30\" value=\"90\" type=\"range\"/>\r\n    </div>\r\n    <div data-role=\"rangeslider\">\r\n        <label for=\"prayerTestimoniesCacheTime\">Prayer Request and Testimonies Cache Time (hours)</label>\r\n        <input name=\"prayerTestimoniesCacheTime\" data-multiplier=3600  id=\"prayerTestimoniesCacheTime\" min=\"5\" max=\"168\" step=\"5\" value=\"72\" type=\"range\"/>\r\n    </div>\r\n\r\n    <!--<div data-role=\"rangeslider\">-->\r\n        <!--<label for=\"liveDataCacheTime\">Live Data Cache Time</label>-->\r\n        <!--<input name=\"liveDataCacheTime\" id=\"liveDataCacheTime\" min=\"60\" max=\"1200\" step=\"30\" value=\"60\" type=\"range\"/>-->\r\n    <!--</div>-->\r\n</div>\r\n<button onclick=\"clearCachePlain();\">Clear Local Cache</button>\r\n<div id=\"cacheKb\"></div>\r\n";
 },"useData":true});
 templates['showPrayerNeeds'] = template({"1":function(depth0,helpers,partials,data) {
     var helper, alias1=this.escapeExpression, alias2=helpers.helperMissing, alias3="function";
 
-  return "    <div data-role=\"collapsible\" >\r\n            <h3>\r\n                A "
+  return "    <div data-role=\"collapsible\" >\r\n            <h3>\r\n                "
+    + alias1(helpers.flagIconLink.call(depth0,(depth0 != null ? depth0.userlocation : depth0),{"name":"flagIconLink","hash":{},"data":data}))
+    + "&nbsp;A "
     + alias1(helpers.genderToPerson.call(depth0,(depth0 != null ? depth0.gender : depth0),{"name":"genderToPerson","hash":{},"data":data}))
     + " from "
     + alias1(((helper = (helper = helpers.userlocation || (depth0 != null ? depth0.userlocation : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(depth0,{"name":"userlocation","hash":{},"data":data}) : helper)))
-    + alias1(helpers.flagIconLink.call(depth0,(depth0 != null ? depth0.userlocation : depth0),{"name":"flagIconLink","hash":{},"data":data}))
-    + "&nbsp;shared a prayer request\r\n                on  "
+    + "shared a prayer request\r\n                on  "
     + alias1(helpers.shortenedDate.call(depth0,(depth0 != null ? depth0.datesubmitted : depth0),{"name":"shortenedDate","hash":{},"data":data}))
     + "\r\n            </h3>\r\n            <p>\r\n                "
     + alias1(((helper = (helper = helpers.comments || (depth0 != null ? depth0.comments : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(depth0,{"name":"comments","hash":{},"data":data}) : helper)))
@@ -214,11 +215,12 @@ templates['showResponses'] = template({"1":function(depth0,helpers,partials,data
 templates['showTestimonies'] = template({"1":function(depth0,helpers,partials,data) {
     var helper, alias1=this.escapeExpression, alias2=helpers.helperMissing, alias3="function";
 
-  return "    <div data-role=\"collapsible\">\r\n      <h3> A "
+  return "    <div data-role=\"collapsible\">\r\n      <h3>"
+    + alias1(helpers.flagIconLink.call(depth0,(depth0 != null ? depth0.userlocation : depth0),{"name":"flagIconLink","hash":{},"data":data}))
+    + "&nbsp;A "
     + alias1(helpers.genderToPerson.call(depth0,(depth0 != null ? depth0.gender : depth0),{"name":"genderToPerson","hash":{},"data":data}))
     + " from "
     + alias1(((helper = (helper = helpers.userlocation || (depth0 != null ? depth0.userlocation : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(depth0,{"name":"userlocation","hash":{},"data":data}) : helper)))
-    + alias1(helpers.flagIconLink.call(depth0,(depth0 != null ? depth0.country : depth0),{"name":"flagIconLink","hash":{},"data":data}))
     + "shared a testimony on  "
     + alias1(helpers.shortenedDate.call(depth0,(depth0 != null ? depth0.datesubmitted : depth0),{"name":"shortenedDate","hash":{},"data":data}))
     + "</h3>\r\n      <p>"

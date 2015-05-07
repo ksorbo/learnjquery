@@ -54,7 +54,7 @@ var options = {
         'cachetime': 3600,
         'template': 'showFullStats',
         'datadiv': 'fullstatsDiv'
-    },
+      },
     'totals': {
         'type': 'totals',
         'cachetime': 120,
@@ -96,7 +96,6 @@ $(document).ready(function () {
     $(document).on('pagehide','#home',function(){
         if(options.home.timer){
             clearInterval(options.home.timer);
-
         }
     })
     $(document).on('pagebeforeshow', '#debug', showLocalStorage);
@@ -109,6 +108,7 @@ $(document).ready(function () {
     $(document).on('pageshow', '#fullstats', function () {
         showFullStats('all');
     });
+
     //OPTIONS
     $(document).on('pagebeforeshow', '#options', showOptions);
     $(document).on('pagehide', '#options', saveOptions);
@@ -127,7 +127,6 @@ $(document).ready(function () {
         sendprayersignup();
         e.preventDefault();
     });
-
 });
 
 
