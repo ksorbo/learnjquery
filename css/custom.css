@@ -76,6 +76,9 @@
     }
 }
 
+.white-space-normal{
+    white-space: normal;
+}
 /* http://www.objectpartners.com/2013/05/13/adding-a-sliding-menu-to-your-jquery-mobile-app/#tehcodez */
 .ui-panel-inner {
     padding:0px; /*make the buttons flush edge to edge*/
