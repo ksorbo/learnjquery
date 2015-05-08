@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/ksorbo/learnjquery/issues"
   },
-  "homepage": "https://github.com/ksorbo/learnjquery"
+  "homepage": "https://github.com/ksorbo/learnjquery",
+  "devDependencies": {
+    "gulp-concat": "^2.5.2",
+    "gulp-concat-css": "^2.2.0",
+    "gulp-jshint": "^1.10.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.0",
+    "gulp-uglify": "^1.2.0"
+  }
 }
