@@ -9,6 +9,22 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concatCss = require('gulp-concat-css');
 var minifyCss = require('gulp-minify-css');
+var handlebars = require('gulp-handlebars');
+var wrap = require('gulp-wrap');
+var declare = require('gulp-declare');
+
+
+gulp.task('templates', function(){
+    gulp.src('js/handlebars/*.handlebars')
+        .pipe(handlebars())
+        .pipe(wrap('Handlebars.template(<%= contents %>)'))
+        //.pipe(declare({
+        //    namespace: 'MyApp.templates',
+        //    noRedeclare: true, // Avoid duplicate declarations
+        //}))
+        .pipe(concat('templates.js'))
+        .pipe(gulp.dest('dist'));
+});
 
 // JS hint task
 gulp.task('jshint', function() {
