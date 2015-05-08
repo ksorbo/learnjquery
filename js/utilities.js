@@ -20,7 +20,7 @@ function clearCacheItem(keyName){
  * @returns {boolean}
  */
 function putCache(keyName, data) {
-    var d = new Date;
+    var d = new Date();
     var saveTime = d.getTime() ;
     //console.log('Savetime = ' + saveTime);
     var cache = {"saveTime": saveTime, 'data': data};
@@ -33,7 +33,7 @@ function putCache(keyName, data) {
  * @param age in seconds
  */
 function getCache(keyName, age) {
-    var d = new Date;
+    var d = new Date();
     var nw = d.getTime();
     var cache, saveTime;
     if (localStorage.getItem(keyName) !== null) {
@@ -53,14 +53,14 @@ function localStorageConsumed(){
     for (i = 0; i < localStorage.length; i++) {
         sizeBytes += localStorage.getItem(localStorage.key(i)).length;
     }
-    return sizeBytes
+    return sizeBytes;
 
 }
 function ajaxindicatorstart(text)
 {
     if(jQuery('body').find('#resultLoading').attr('id') != 'resultLoading'){
-        jQuery('body').append('<div id="resultLoading" style="display:none"><div><img src="img/ajax-loader.gif"><div>'
-        +text+'</div></div><div class="bg"></div></div>');
+        jQuery('body').append('<div id="resultLoading" style="display:none"><div><img src="img/ajax-loader.gif"><div>' +
+        text+'</div></div><div class="bg"></div></div>');
     }
 
     jQuery('#resultLoading').css({

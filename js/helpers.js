@@ -27,4 +27,4 @@ Handlebars.registerHelper('flagIconLink',function(country){
         country= country.indexOf(',')>0 ? country.substring(0, country.indexOf(',')) : country;
         return new Handlebars.SafeString('<img class="flagicon" src="img/flags/' + country.replace(/\s+/g, '-').toLowerCase() + '.png" />');
     }else{ return '';}
-})
+});

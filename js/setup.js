@@ -97,7 +97,7 @@ $(document).ready(function () {
         if(options.home.timer){
             clearInterval(options.home.timer);
         }
-    })
+    });
     $(document).on('pagebeforeshow', '#debug', showLocalStorage);
     $(document).on('pagebeforeshow', '#prayerneeds', showPrayerNeeds);
     $(document).on('pagebeforeshow', '#news', showNews);
