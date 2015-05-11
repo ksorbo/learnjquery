@@ -56,3 +56,10 @@ gulp.task('scripts', function() {
         .pipe(uglify())
         .pipe(gulp.dest('dist'));
 });
+gulp.task('latin',function(){
+    return gulp.src('js/latinise-abbr.js')
+        //.pipe(rename('latinize-abbr-min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./'));
+
+})
