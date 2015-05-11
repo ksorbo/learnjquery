@@ -8,7 +8,7 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>Network211 Connector</name>
+    <name>Network211 Reporter</name>
 
     <description>
         This application allows users to obtain the latest statistics and information from Network211's Project100million.
