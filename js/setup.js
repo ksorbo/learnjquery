@@ -85,7 +85,7 @@ $(document).ready(function () {
     var devicePlatform = device.cordova;
     var deviceVersion = device.version;
     $('#aboutversioninfo').html('<p>Version: '+ appVersion + '<br>'+' Device Info: '+ devicePlatform+':'+deviceVersion+'</p>' );
-
+    alert('Device: '+devicePlatform+ "-"+deviceVersion);
     $('#button-bars').css('margin-top', '23px');
     showHome();
 
