@@ -139,7 +139,11 @@ function buildYearPicker(select) {
         selected = (select==theYear) ? ' selected="selected" ': '';
         ret += '<option value="' + theYear+'"' + selected + '>'+i+'</option>';
     }
-    ret += '</select></div></form>';
+    ret += '</select></div>';
+    //ret += '<input type="date" name="full-start-date" data-role="date">';
+    //ret += '<input type="date" name="full-end-date" data-role="date">';
+
+    ret += '</form>';
     return ret;
 }
 function showTotals() {

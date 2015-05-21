@@ -2,6 +2,7 @@
  * Created by ksorbo on 4/2/2015.
  */
 var rootDomain = 'http://rest.net211.com/';
+var appVersion = '0.9.2';
 var options = {
     'home':{
         'cachetime': 120
@@ -82,6 +83,9 @@ $(document).ready(function () {
 
     loadOptions();
     showHome();
+    var devicePlatform = device.cordova;
+    var deviceVersion = device.version;
+
     $('#button-bars').css('margin-top', '3px');
 
     $(document).on('pageshow', '#home', function(){
