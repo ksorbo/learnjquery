@@ -82,7 +82,7 @@ var options = {
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
     var element = document.getElementById('deviceinfo');
-    alert('Device Ready');
+    //alert('Device Ready');
     element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
     'Device Cordova: '  + device.cordova  + '<br />' +
     'Device Platform: ' + device.platform + '<br />' +

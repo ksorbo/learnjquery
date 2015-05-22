@@ -2,8 +2,8 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.network211.reporter"
-        versionCode = "0.9.10"
-        version     = "0.9.10"
+        versionCode = "0.9.13"
+        version     = "0.9.13"
         >
     <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
     <gap:plugin name="com.phonegap.plugins.childbrowser" version="5.0.0" />
@@ -24,4 +24,6 @@
     <preference name="phonegap-version" value="3.7.0" />
     <preference name="orientation" value="default" />
     <icon src="icon.png" width="600" height="383" />
+    <gap:splash src="splash.png" />
+
 </widget>
