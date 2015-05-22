@@ -24,9 +24,7 @@
         <div data-role="panel" id="navpanel" data-theme="a"
              data-display="overlay" data-position="right">
             <div data-role="controlgroup" data-corners="false">
-                <a data-role="button"
-                   target="_blank"
-                   href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
+                <a data-role="button" onclick="openDonatePage()">Donate</a>
                 <a href="#fullstats" data-role="button">Project 100Million Stats</a>
                 <a href="#livedata" data-role="button">Live Data</a>
                 <a href="#responses" data-role="button">Evangelism Responses</a>
@@ -48,12 +46,12 @@
         </div>
         <article data-role="content" class="ui-content" id="homecontent">
             <div class="homepage-centered">
-                <a href="http://project100million.com"><img style="float:left" src="img/p100mlogo.png" width="15%"></a>
+                <a href="#" onclick="window.open('http://project100million.com','_self')"><img style="float:left" src="img/p100mlogo.png" width="15%"></a>
 
                 <p style="float:left;text-align:center;text-shadow:none;width:62%;padding:0 4%;"><span
                         style="font-weight: bold;font-size:120%">Project 100Million</span><br>
                     Presenting the Gospel to everyone,&nbsp;everywhere!</p>
-                <a href="http://network211.com">
+                <a href="#" onclick="window.open('http://network211.com','_self');">
                     <img style="float:right; margin-top:8px;" src="img/N211LogoNew.png" width="15%"></a>
 
                 <div style="margin:0 auto;max-width:400px;width:100%;float:none;display:block">
@@ -63,9 +61,8 @@
 
 
                 <a style="margin:0 auto;width:100%;display:block;max-width:650px;" data-role="button" data-theme="e"
-                   target="_blank"
-                   onclick="window.plugins.ChildBrowser.openExternal('https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1');"  >
-                   <!--href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">-->
+
+                   onclick="openDonatePage()"  >
                     Donate</a>
                 <img style="width: 100%;display:block;clear:both;float:none;margin:0 auto;margin-top:10px;max-width: 650px;"
                      src="http://rest.net211.com/inquirermap/30/75">
@@ -73,17 +70,7 @@
                 <p style="text-align:center;margin-top:3px;text-shadow: none;">Countries with Discipleship Connections
                     in the Last 30 Days</p>
             </div>
-            <a href="#" onclick="window.open('http://rest.net211.com/items/inquirers' '_system');">Testme</a>
-            <p>link test<br /><br />
-                <a href="#" onclick="window.open('http://www.wikipedia.org','_self','location=yes')">Wikipedia (webview)</a><br /><br />
-                <a href="#" onclick="window.open('http://www.wikipedia.org','_blank','location=yes')">Wikipedia (inAppBrowser)</a><br /><br />
-                <a href="#" onclick="window.open('http://www.wikipedia.org','_system','location=yes')">Wikipedia (mobile browser)</a><br /><br />
-            </p>
-            <p>button test<br /><br />
-                <button type="button" onclick="window.open('http://www.wikipedia.org','_self','location=yes')">Wikipedia (webview)</button><br /><br />
-                <button type="button" onclick="window.open('http://www.wikipedia.org','_blank','location=yes')">Wikipedia (inAppBrowser)</button><br /><br />
-                <button type="button" onclick="window.open('http://www.wikipedia.org','_system','location=yes')">Wikipedia (mobile browser)</button><br /><br />
-            </p>
+
         </article>
     </div>
     <!--SITES-->
@@ -98,8 +85,8 @@
         <article data-role="content" id="sitesList">
             <h2>Network211's Evangelism Websites</h2>
 
-            <p><a href="http://project10million.com" target="_blank">Project 100Million</a> is an evangelism ministry
-                of<a href="http://network211.com" target="_blank"> Network211</a>. Our goal is to reach 100
+            <p><a herf="#" onclick="window.open('http://project10million.com','_self');">Project 100Million</a> is an evangelism ministry
+                of<a herf="#" onclick="window.open('http://network211.com','_self');" > Network211</a>. Our goal is to reach 100
                 million individuals with the Gospel using the Internet.
             </p>
 
@@ -111,7 +98,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://nedaaal-ragah.com" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://nedaaal-ragah.com','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jaar.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">Nedaaal-Ragah.com</h3>
@@ -127,7 +114,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://journeyanswers.com" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://journeyanswers.com','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jaen.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">Journeyanswers.com</h3>
@@ -143,7 +130,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://pasokhha.com" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://pasokhha.com','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jafa.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">Pasokhha.com</h3>
@@ -159,7 +146,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://journeyanswers.ph" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://journeyanswers.ph','_self');" class="ui-link-inherit">
                                 <img src="img/sites/japh.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">JourneyAnswers.ph</h3>
@@ -175,7 +162,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://teranghidup.com" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://teranghidup.com','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jaid.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">TerangHidup.com</h3>
@@ -192,7 +179,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://kotaeenotabi.com/" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://kotaeenotabi.com/','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jajp.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">KotaeENoTabi.com</h3>
@@ -208,7 +195,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://journeyanswers.kr" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://journeyanswers.kr','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jakr.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">JourneyAnswers.kr</h3>
@@ -224,7 +211,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://renshengdaan.com" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://renshengdaan.com','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jazh.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">Renshengdaan.com</h3>
@@ -240,7 +227,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://putevyeotvety.com/" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://putevyeotvety.com/','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jaru.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">Putevyeotvety.com</h3>
@@ -256,7 +243,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://deaf.journeyanswers.com" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://deaf.journeyanswers.com','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jaasl.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">Deaf.JourneyAnswers.com</h3>
@@ -272,7 +259,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://respuestasdelavida.com" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://respuestasdelavida.com','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jaes.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">RespuestasDeLaVida.com</h3>
@@ -288,7 +275,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://buochyvong.com/" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://buochyvong.com/','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jaid.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">Buochyvong.com</h3>
@@ -307,7 +294,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://whojesusis.com" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://whojesusis.com','_self');" class="ui-link-inherit">
                                 <img src="img/sites/wji.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">WhoJesusIs.com</h3>
@@ -324,7 +311,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://descubreajesus.com/" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://descubreajesus.com/','_self');" class="ui-link-inherit">
                                 <img src="img/sites/wjies.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">DescubreAJesus.com</h3>
@@ -341,7 +328,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://ktoiisus.com/" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://ktoiisus.com/','_self');" class="ui-link-inherit">
                                 <img src="img/sites/wjiru.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">KitoiIsus.com</h3>
@@ -358,7 +345,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://muslimsask.com/" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://muslimsask.com/','_self');" class="ui-link-inherit">
                                 <img src="img/sites/jaid.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">MuslimsAsk.com</h3>
@@ -374,7 +361,7 @@
                     style="padding-left:10px;">
                     <div class="ui-btn-inner ui-li">
                         <div class="ui-btn-text">
-                            <a href="http://family-relationships.com" class="ui-link-inherit">
+                            <a herf="#" onclick="window.open('http://family-relationships.com','_self');" class="ui-link-inherit">
                                 <img src="img/sites/family.jpg" class="ui-li-thumb">
 
                                 <h3 class="ui-li-heading">Family-Relationships.com</h3>
