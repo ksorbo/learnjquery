@@ -93,25 +93,13 @@ function onDeviceReady() {
 $(document).ready(function () {
 
     loadOptions();
-    //var devicePlatform = device.cordova;
-    //var deviceVersion = device.version;
-    //$('#aboutversioninfo').html('<p>Version: '+ appVersion + '<br>'+' Device Info: '+ devicePlatform+':'+deviceVersion+'</p>' );
-    //alert('Device: '+devicePlatform+ "-"+deviceVersion);
-    $('#button-bars').css('margin-top', '23px');
     showHome();
     $('#aboutversioninfo').html('App Version: ' + appVersion);
-    $(document).on('pagecreate','[data-role="page"]'),function(){
 
-    }
     $(document).on('pageshow', '#home', function(){
-        //showHome();
         options.home.timer = setInterval(showHome, options.home.cachetime * 1000);
-        //options.home.clock = setInterval(function(){
-        //    var d = new Date();
-        //    $('#home-tmp').html(d.getHours() + ':' + d.getMinutes()+':'+d.getSeconds());
-        //},
-        //1000);
     });
+
     $(document).on('pagehide','#home',function(){
         if(options.home.timer){
             clearInterval(options.home.timer);
