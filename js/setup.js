@@ -2,7 +2,7 @@
  * Created by ksorbo on 4/2/2015.
  */
 var rootDomain = 'http://rest.net211.com/';
-var appVersion = '0.9.6';
+var appVersion = '0.9.8';
 var options = {
     'home':{
         'cachetime': 120
@@ -79,13 +79,23 @@ var options = {
     }
 };
 
+document.addEventListener("deviceready", onDeviceReady, false);
+function onDeviceReady() {
+    var element = document.getElementById('aboutversioninfo');
+    element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+    'Device Cordova: '  + device.cordova  + '<br />' +
+    'Device Platform: ' + device.platform + '<br />' +
+    'Device UUID: '     + device.uuid     + '<br />' +
+    'Device Version: '  + device.version  + '<br />';
+}
+
 $(document).ready(function () {
 
     loadOptions();
-    var devicePlatform = device.cordova;
-    var deviceVersion = device.version;
-    $('#aboutversioninfo').html('<p>Version: '+ appVersion + '<br>'+' Device Info: '+ devicePlatform+':'+deviceVersion+'</p>' );
-    alert('Device: '+devicePlatform+ "-"+deviceVersion);
+    //var devicePlatform = device.cordova;
+    //var deviceVersion = device.version;
+    //$('#aboutversioninfo').html('<p>Version: '+ appVersion + '<br>'+' Device Info: '+ devicePlatform+':'+deviceVersion+'</p>' );
+    //alert('Device: '+devicePlatform+ "-"+deviceVersion);
     $('#button-bars').css('margin-top', '23px');
     showHome();
 

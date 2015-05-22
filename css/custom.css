@@ -88,6 +88,10 @@
 }
 #header {
     height:54px;
+    margin-top:23px;
+}
+.ui-header{
+    margin-top:23px;
 }
 #bars-button {
     margin:7px;
