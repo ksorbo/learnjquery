@@ -2,7 +2,7 @@
  * Created by ksorbo on 4/2/2015.
  */
 var rootDomain = 'http://rest.net211.com/';
-var appVersion = '0.9.11';
+var appVersion = '0.9.14';
 var options = {
     'home':{
         'cachetime': 120
@@ -100,6 +100,9 @@ $(document).ready(function () {
     $('#button-bars').css('margin-top', '23px');
     showHome();
     $('#aboutversioninfo').html('App Version: ' + appVersion);
+    $(document).on('pagecreate','[data-role="page"]'),function(){
+
+    }
     $(document).on('pageshow', '#home', function(){
         //showHome();
         options.home.timer = setInterval(showHome, options.home.cachetime * 1000);
