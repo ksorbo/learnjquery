@@ -2,7 +2,7 @@
  * Created by ksorbo on 4/2/2015.
  */
 var rootDomain = 'http://rest.net211.com/';
-var appVersion = '0.9.9';
+var appVersion = '0.9.10';
 var options = {
     'home':{
         'cachetime': 120
@@ -81,7 +81,8 @@ var options = {
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
-    var element = document.getElementById('aboutversioninfo');
+    var element = document.getElementById('deviceinfo');
+    alert('Device Ready');
     element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
     'Device Cordova: '  + device.cordova  + '<br />' +
     'Device Platform: ' + device.platform + '<br />' +
@@ -98,7 +99,7 @@ $(document).ready(function () {
     //alert('Device: '+devicePlatform+ "-"+deviceVersion);
     $('#button-bars').css('margin-top', '23px');
     showHome();
-
+    $('#aboutversioninfo').html('App Version: ' + appVersion);
     $(document).on('pageshow', '#home', function(){
         //showHome();
         options.home.timer = setInterval(showHome, options.home.cachetime * 1000);
