@@ -2,7 +2,7 @@
  * Created by keith on 3/28/2015.
  */
 function openDonatePage(){
-    window.open('https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1','_self');
+    window.open('https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1','_blank','location=yes');
 }
 function loadPage(option) {
     var data = fetchItems(option);
