@@ -2,7 +2,7 @@
  * Created by ksorbo on 4/2/2015.
  */
 var rootDomain = 'http://rest.net211.com/';
-var appVersion = '0.9.14';
+var appVersion = '0.9.23';
 var options = {
     'home':{
         'cachetime': 120
@@ -94,7 +94,7 @@ $(document).ready(function () {
 
     loadOptions();
     showHome();
-    $('#aboutversioninfo').html('App Version: ' + appVersion);
+    $('#aboutversioninfo').html('<h3 style="margin-bottom:10px">Network211 Reporter App Version: ' + appVersion +"</h3>");
 
     $(document).on('pageshow', '#home', function(){
         options.home.timer = setInterval(showHome, options.home.cachetime * 1000);

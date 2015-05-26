@@ -2,10 +2,9 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.network211.reporter"
-        versionCode = "0.9.22"
-        version     = "0.9.22"
+        versionCode = "0.9.23"
+        version     = "0.9.23"
         >
-    <icon src="icon.png" />
     <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
     <gap:plugin name="com.phonegap.plugins.childbrowser" version="5.0.0" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
@@ -20,6 +19,8 @@
     <author href="http://app.network211.com" email="info@network211.com">
         Keith Sorbo
     </author>
+
+    <feature name="http://api.phonegap.com/1.0/network" />
 
     <content src="index.html"/>
     <access origin="*"/>

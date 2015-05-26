@@ -25,6 +25,7 @@
              data-display="overlay" data-position="right">
             <div data-role="controlgroup" data-corners="false">
                 <a data-role="button" onclick="openDonatePage()">Donate</a>
+                <a href="#home" data-role="button">Home</a>
                 <a href="#fullstats" data-role="button">Project 100Million Stats</a>
                 <a href="#livedata" data-role="button">Live Data</a>
                 <a href="#responses" data-role="button">Evangelism Responses</a>
@@ -40,7 +41,7 @@
             </div>
         </div>
         <div data-role="header" data-theme="b" class="ui-header">
-            <a id="bars-button" data-icon="bars" class="ui-btn-right" style="margin-top:3px;" href="#navpanel">Menu</a>
+            <a id="bars-button" data-icon="bars" class="ui-btn-left" style="margin-top:3px;" href="#navpanel">Menu</a>
 
             <h1>Network211.com</h1>
         </div>
@@ -396,8 +397,7 @@
         <div data-role="header" data-theme="b" class="ui-header">
             <a data-role="button" href="#home" class="menu-button">Home</a>
             <a data-role="button"
-               onclick="window.plugins.ChildBrowser.openExternal('https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1');"  >Donate</a>
-               <!--href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>-->
+               onclick="openDonatePage();"  >Donate</a>
             <h1>About Us</h1>
         </div>
         <!-- /header -->
@@ -465,7 +465,6 @@
             <a data-role="button" href="#home" class="menu-button">Home</a>
             <a data-role="button"
                href="#" onclick="openDonatePage()">Donate</a>
-
 
             <h1>News From Network211</h1>
         </div>
