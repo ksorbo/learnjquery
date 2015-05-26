@@ -22,7 +22,7 @@
     <!--HOME-->
     <div data-role="page" id="home" data-theme="b">
         <div data-role="panel" id="navpanel" data-theme="a"
-             data-display="overlay" data-position="right">
+             data-display="overlay" data-position="left">
             <div data-role="controlgroup" data-corners="false">
                 <a data-role="button" onclick="openDonatePage()">Donate</a>
                 <a href="#home" data-role="button">Home</a>
@@ -79,7 +79,7 @@
         <div data-role="header" data-theme="b" class="ui-header">
             <a data-role="button" href="#home" class="menu-button">Home</a>
             <a data-role="button"
-               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
+               onclick="openDonatePage()">Donate</a>
 
             <h1>Network211 Websites</h1>
         </div>
@@ -384,12 +384,12 @@
         <div data-role="header" data-theme="b" class="ui-header">
             <a data-role="button" href="#home" class="menu-button">Home</a>
             <a data-role="button"
-               href="https://giving.ag.org/Give/Details/600001-663646?MinistryName=Network211&Page=1">Donate</a>
+               onclick="openDonatePage()">Donate</a>
 
             <h1>Live Data</h1>
         </div>
         <article data-role="content" id="livedataList">
-            <h1 class="loading">Loading...</h1>
+            Retrieving up-to-date statistics...
         </article>
     </div>
     <!--help About us-->
@@ -550,7 +550,7 @@
             <h1>Recent Discipleship Connections</h1>
         </div>
         <!-- /header -->
-        <article data-role="content" id="inquirersList">
+        <article data-role="content" id="inquirersList">Retrieving up-to-date statistics...
         </article>
 
     </div>
@@ -565,7 +565,7 @@
             <h1>Recent Evangelism Responses</h1>
         </div>
         <!-- /header -->
-        <article data-role="content" id="responsesList">
+        <article data-role="content" id="responsesList">Retrieving up-to-date statistics...
         </article>
     </div>
 
@@ -579,7 +579,7 @@
             <h1>Prayer Needs from Inquirers</h1>
         </div>
 
-        <article data-role="content" id="prayerneedsList">
+        <article data-role="content" id="prayerneedsList">Retrieving up-to-date statistics...
         </article>
     </div>
 

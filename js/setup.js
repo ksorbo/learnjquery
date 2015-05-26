@@ -2,7 +2,7 @@
  * Created by ksorbo on 4/2/2015.
  */
 var rootDomain = 'http://rest.net211.com/';
-var appVersion = '0.9.23';
+var appVersion = '0.9.24';
 var options = {
     'home':{
         'cachetime': 120
