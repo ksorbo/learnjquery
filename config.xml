@@ -2,7 +2,8 @@
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.network211.reporter"
-        versionCode = "0.9.25"
+        versionCode = "2"
+        versionName = "0.9.25"
         version     = "0.9.25"
         >
     <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
