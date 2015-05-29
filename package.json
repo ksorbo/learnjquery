@@ -1,7 +1,7 @@
 {
-  "name": "jQueryMobile",
-  "version": "1.0.0",
-  "description": "",
+  "name": "Network211Reporter",
+  "version": "0.9.0",
+  "description": "Html5 app to show stats from Network211's Project 100Million",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

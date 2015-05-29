@@ -27,5 +27,11 @@
     <preference name="phonegap-version" value="3.7.0" />
     <preference name="orientation" value="default" />
     <icon src="icon.png" width="600" height="383" />
+    <icon src="img/icons/N211SquareLogo36px.png" gap:platform="android" gap:qualifier="ldpi" />
+    <icon src="img/icons/N211SquareLogo48px.png" gap:platform="android" gap:qualifier="mdpi" />
+    <icon src="img/icons/N211SquareLogo72px.png" gap:platform="android" gap:qualifier="hdpi" />
+    <icon src="img/icons/N211SquareLogo96px.png" gap:platform="android" gap:qualifier="xhdpi" />
+    <icon src="img/icons/N211SquareLogo144px.png" gap:platform="android" gap:qualifier="xxhdpi" />
+    <icon src="img/icons/N211SquareLogo192px.png" gap:platform="android" gap:qualifier="fr-xxhdpi" />
     <gap:splash src="splash.png" />
 </widget>
