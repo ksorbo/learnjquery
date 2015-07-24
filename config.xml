@@ -25,7 +25,8 @@
 
     <content src="index.html"/>
     <access origin="*"/>
-    <preference name="phonegap-version" value="3.7.0" />
+
+    <preference name='phonegap-version' value='cli-5.1.1' />
     <preference name="orientation" value="default" />
     <icon src="icon.png" width="600" height="383" />
     <icon src="icons/ldpi.png" gap:platform="android" gap:qualifier="ldpi" />
