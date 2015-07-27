@@ -66,16 +66,29 @@
 
     <platform name="ios">
         <!-- images are determined by width and height. The following are supported -->
-        <splash src="splash/ios/Default~iphone.png" width="320" height="480"/>
-        <splash src="splash/ios/Default@2x~iphone.png" width="640" height="960"/>
-        <splash src="splash/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
-        <splash src="splash/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
-        <splash src="splash/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
-        <splash src="splash/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
-        <splash src="splash/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
-        <splash src="splash/ios/Default-667h.png" width="750" height="1334"/>
-        <splash src="splash/ios/Default-736h.png" width="1242" height="2208"/>
-        <splash src="splash/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
+        <!-- Tablet-->
+            <!-- Non-Retina-->
+            <splash src="splash/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
+            <splash src="splash/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
+            <!-- Retina (2x)-->
+            <splash src="splash/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+            <splash src="splash/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
+        <!-- Handheld-->
+            <!-- Non-retina-->
+            <splash src="splash/ios/Default~iphone.png" width="320" height="480"/>
+            <splash src="splash/ios/Default~Landscape~iphone.png" width="480" height="320"/>
+            <!-- Retina (2x)-->
+            <splash src="splash/ios/Default@2x~iphone.png" width="640" height="960"/>
+            <splash src="splash/ios/Default@2xLandscape~iphone.png" width="960" height="640"/>
+            <!-- iPHone 5 Retina (2x)-->
+            <splash src="splash/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
+            <splash src="splash/ios/Default-568v@2x~iphone.png" width="1136" height="640"/>
+            <!-- iPhone6 (2x)-->
+            <splash src="splash/ios/Default-667h.png" width="750" height="1334"/>
+            <splash src="splash/ios/Default-667v.png" width="1334" height="750"/>
+            <!-- iPhone 6 (3x)-->
+            <splash src="splash/ios/Default-736h.png" width="1242" height="2208"/>
+            <splash src="splash/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
     </platform>
     
 </widget>
