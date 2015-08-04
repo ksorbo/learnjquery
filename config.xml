@@ -3,8 +3,8 @@
         xmlns:gap="http://phonegap.com/ns/1.0"
         id="com.network211.reporter"
         versionCode="3"
-        versionName="0.9.29"
-        version="0.9.29"
+        versionName="0.9.30"
+        version="0.9.30"
         >
     <gap:plugin name="org.apache.cordova.device" version="0.2.12"/>
     <gap:plugin name="com.phonegap.plugins.childbrowser" version="5.0.0"/>
